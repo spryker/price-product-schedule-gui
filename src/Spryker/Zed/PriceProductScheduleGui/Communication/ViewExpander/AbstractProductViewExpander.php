@@ -127,10 +127,7 @@ class AbstractProductViewExpander implements AbstractProductViewExpanderInterfac
             return $tabsViewTransfer;
         }
 
-        /** @var \Generated\Shared\Transfer\TabItemTransfer $tabItemTransfer */
-        $tabItemTransfer = $tabsViewTransfer->getTabs()[0];
-
-        $defaultActiveTabName = $tabItemTransfer->getName();
+        $defaultActiveTabName = $tabsViewTransfer->getTabs()[0]->getName();
         $tabsViewTransfer->setActiveTabName($defaultActiveTabName);
 
         return $tabsViewTransfer;
