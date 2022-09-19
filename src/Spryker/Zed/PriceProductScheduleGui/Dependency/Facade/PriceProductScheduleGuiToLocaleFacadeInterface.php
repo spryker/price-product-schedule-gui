@@ -7,10 +7,10 @@
 
 namespace Spryker\Zed\PriceProductScheduleGui\Dependency\Facade;
 
-interface PriceProductScheduleGuiToPriceProductFacadeInterface
+interface PriceProductScheduleGuiToLocaleFacadeInterface
 {
     /**
-     * @return array<\Generated\Shared\Transfer\PriceTypeTransfer>
+     * @return string
      */
-    public function getPriceTypeValues(): array;
+    public function getCurrentLocaleName(): string;
 }
