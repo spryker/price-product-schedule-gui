@@ -21,14 +21,14 @@
         {% block widget_content %}
             {{ form_start(form, {method: 'POST'}) }}
             <div class="row">
-                <div class="col-xs-12 col-md-6 col-lg-3">
+                <div class="col-md-6 col-lg-3">
                     <span><b>{{ 'Import n' | trans }}</b></span><br>
                     <span>{{ priceProductScheduleList.idPriceProductScheduleList }}</span>
                 </div>
             </div>
             {{ form_row(form.name) }}
             <div class="row">
-                <div class="col-xs-12 col-md-6 col-lg-3">
+                <div class="col-md-6 col-lg-3">
                     <span><b>{{ 'Imported by on the' | trans }}</b></span><br>
                     {% if(priceProductScheduleList.user) %}
                         <span>{{ priceProductScheduleList.user.firstName ~ ' ' ~ priceProductScheduleList.user.lastName }}</span>
@@ -39,13 +39,13 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12 col-md-6 col-lg-3">
+                <div class="col-md-6 col-lg-3">
                     <span><b>{{ 'Number of prices' | trans }}</b></span><br>
                     <span>{{ priceProductScheduleList.metadata.numberOfPrices }}</span>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12 col-md-6 col-lg-3">
+                <div class="col-md-6 col-lg-3">
                     <span><b>{{ 'Number of products' | trans }}</b></span><br>
                     <span>{{ priceProductScheduleList.metadata.numberOfProducts }}</span>
                 </div>
