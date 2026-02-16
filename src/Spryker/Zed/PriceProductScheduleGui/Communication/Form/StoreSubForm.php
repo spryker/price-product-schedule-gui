@@ -68,6 +68,7 @@ class StoreSubForm extends AbstractType
         /** @var \Generated\Shared\Transfer\StoreTransfer $storeTransfer */
         $storeTransfer = $event->getData();
         $choices = [];
+        // @phpstan-ignore notIdentical.alwaysTrue
         if ($storeTransfer !== null) {
             $choices = $this->getCurrencyChoices($storeTransfer);
         }

@@ -23,6 +23,7 @@ class PriceProductScheduleUniqueConstraintValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint): void
     {
+        // @phpstan-ignore instanceof.alwaysTrue
         if (!$constraint instanceof PriceProductScheduleUniqueConstraint) {
             throw new UnexpectedTypeException($constraint, PriceProductScheduleUniqueConstraint::class);
         }
