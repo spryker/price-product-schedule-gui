@@ -36,10 +36,6 @@ class ImportErrorListTable extends AbstractTable
      */
     protected $translatorFacade;
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductScheduleListImportResponseTransfer $priceProductScheduleListImportResponseTransfer
-     * @param \Spryker\Zed\PriceProductScheduleGui\Dependency\Facade\PriceProductScheduleGuiToTranslatorFacadeInterface $translatorFacade
-     */
     public function __construct(
         PriceProductScheduleListImportResponseTransfer $priceProductScheduleListImportResponseTransfer,
         PriceProductScheduleGuiToTranslatorFacadeInterface $translatorFacade
@@ -48,11 +44,6 @@ class ImportErrorListTable extends AbstractTable
         $this->translatorFacade = $translatorFacade;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return \Spryker\Zed\Gui\Communication\Table\TableConfiguration
-     */
     protected function configure(TableConfiguration $config): TableConfiguration
     {
         $this->disableSearch();
@@ -65,11 +56,6 @@ class ImportErrorListTable extends AbstractTable
         return $config;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return array
-     */
     protected function prepareData(TableConfiguration $config): array
     {
         $data = [];

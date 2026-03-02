@@ -28,11 +28,6 @@ class StoreSubForm extends AbstractType
      */
     public const FIELD_ID_STORE = 'idStore';
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefined([
@@ -58,11 +53,6 @@ class StoreSubForm extends AbstractType
         $builder->addEventListener(FormEvents::PRE_SET_DATA, [$this, 'initializeCurrencySubForm']);
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormEvent $event
-     *
-     * @return void
-     */
     public function initializeCurrencySubForm(FormEvent $event): void
     {
         /** @var \Generated\Shared\Transfer\StoreTransfer $storeTransfer */
@@ -96,11 +86,6 @@ class StoreSubForm extends AbstractType
             ]);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return array
-     */
     protected function getCurrencyChoices(StoreTransfer $storeTransfer): array
     {
         return array_flip(

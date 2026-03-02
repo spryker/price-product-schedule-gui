@@ -18,58 +18,27 @@ use Spryker\Zed\PriceProductSchedule\Communication\File\UploadedFile;
 
 interface PriceProductScheduleGuiToPriceProductScheduleFacadeInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductScheduledListImportRequestTransfer $priceProductScheduledListImportRequest
-     *
-     * @return \Generated\Shared\Transfer\PriceProductScheduleListImportResponseTransfer
-     */
     public function importPriceProductSchedules(
         PriceProductScheduledListImportRequestTransfer $priceProductScheduledListImportRequest
     ): PriceProductScheduleListImportResponseTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductScheduleListTransfer $priceProductScheduleListTransfer
-     *
-     * @return \Generated\Shared\Transfer\PriceProductScheduleListResponseTransfer
-     */
     public function createPriceProductScheduleList(
         PriceProductScheduleListTransfer $priceProductScheduleListTransfer
     ): PriceProductScheduleListResponseTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductScheduleListTransfer $priceProductScheduleListTransfer
-     *
-     * @return \Generated\Shared\Transfer\PriceProductScheduleListResponseTransfer
-     */
     public function updatePriceProductScheduleList(
         PriceProductScheduleListTransfer $priceProductScheduleListTransfer
     ): PriceProductScheduleListResponseTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductScheduleListTransfer $priceProductScheduleListTransfer
-     *
-     * @return \Generated\Shared\Transfer\PriceProductScheduleListResponseTransfer
-     */
     public function findPriceProductScheduleList(
         PriceProductScheduleListTransfer $priceProductScheduleListTransfer
     ): PriceProductScheduleListResponseTransfer;
 
-    /**
-     * @param \Spryker\Zed\PriceProductSchedule\Communication\File\UploadedFile $uploadedFile
-     * @param \Generated\Shared\Transfer\PriceProductScheduledListImportRequestTransfer $productScheduledListImportRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\PriceProductScheduledListImportRequestTransfer
-     */
     public function readPriceProductScheduleImportTransfersFromCsvFile(
         UploadedFile $uploadedFile,
         PriceProductScheduledListImportRequestTransfer $productScheduledListImportRequestTransfer
     ): PriceProductScheduledListImportRequestTransfer;
 
-    /**
-     * @param \Spryker\Zed\PriceProductSchedule\Communication\File\UploadedFile $uploadedFile
-     *
-     * @return \Generated\Shared\Transfer\PriceProductScheduleCsvValidationResultTransfer
-     */
     public function validateCsvFile(UploadedFile $uploadedFile): PriceProductScheduleCsvValidationResultTransfer;
 
     /**
@@ -81,45 +50,15 @@ interface PriceProductScheduleGuiToPriceProductScheduleFacadeInterface
         int $idPriceProductScheduleList
     ): array;
 
-    /**
-     * @param int $idPriceProductSchedule
-     *
-     * @return void
-     */
     public function removeAndApplyPriceProductSchedule(int $idPriceProductSchedule): void;
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductScheduleTransfer $priceProductScheduleTransfer
-     *
-     * @return \Generated\Shared\Transfer\PriceProductScheduleResponseTransfer
-     */
     public function createAndApplyPriceProductSchedule(PriceProductScheduleTransfer $priceProductScheduleTransfer): PriceProductScheduleResponseTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductScheduleTransfer $priceProductScheduleTransfer
-     *
-     * @return \Generated\Shared\Transfer\PriceProductScheduleResponseTransfer
-     */
     public function updateAndApplyPriceProductSchedule(PriceProductScheduleTransfer $priceProductScheduleTransfer): PriceProductScheduleResponseTransfer;
 
-    /**
-     * @param int $idPriceProductSchedule
-     *
-     * @return \Generated\Shared\Transfer\PriceProductScheduleTransfer|null
-     */
     public function findPriceProductScheduleById(int $idPriceProductSchedule): ?PriceProductScheduleTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductScheduleTransfer $priceProductScheduleTransfer
-     *
-     * @return bool
-     */
     public function isPriceProductScheduleUnique(PriceProductScheduleTransfer $priceProductScheduleTransfer): bool;
 
-    /**
-     * @param int $idPriceProductScheduleList
-     *
-     * @return \Generated\Shared\Transfer\PriceProductScheduleListResponseTransfer
-     */
     public function removePriceProductScheduleList(int $idPriceProductScheduleList): PriceProductScheduleListResponseTransfer;
 }

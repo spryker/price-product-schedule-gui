@@ -16,11 +16,6 @@ class PriceProductScheduleRedirectToScheduleList implements PriceProductSchedule
      */
     protected const REDIRECT_URL_SCHEDULE_LIST_PATTERN = '/price-product-schedule-gui/edit-schedule-list?id-price-product-schedule-list=%d';
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductScheduleRedirectTransfer $priceProductScheduleRedirectTransfer
-     *
-     * @return \Generated\Shared\Transfer\PriceProductScheduleRedirectTransfer
-     */
     public function makeRedirectUrl(
         PriceProductScheduleRedirectTransfer $priceProductScheduleRedirectTransfer
     ): PriceProductScheduleRedirectTransfer {

@@ -38,11 +38,6 @@ class RowFormatter implements RowFormatterInterface
      */
     protected $currencyMapper;
 
-    /**
-     * @param \Spryker\Zed\PriceProductScheduleGui\Dependency\Facade\PriceProductScheduleGuiToMoneyFacadeInterface $moneyFacade
-     * @param \Spryker\Zed\PriceProductScheduleGui\Dependency\Facade\PriceProductScheduleGuiToStoreFacadeInterface $storeFacade
-     * @param \Spryker\Zed\PriceProductScheduleGui\Communication\Mapper\CurrencyMapperInterface $currencyMapper
-     */
     public function __construct(
         PriceProductScheduleGuiToMoneyFacadeInterface $moneyFacade,
         PriceProductScheduleGuiToStoreFacadeInterface $storeFacade,
@@ -53,12 +48,6 @@ class RowFormatter implements RowFormatterInterface
         $this->currencyMapper = $currencyMapper;
     }
 
-    /**
-     * @param int $amount
-     * @param \Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductSchedule $priceProductScheduleEntity
-     *
-     * @return string
-     */
     public function formatMoney(int $amount, SpyPriceProductSchedule $priceProductScheduleEntity): string
     {
         $currencyTransfer = $this->currencyMapper->mapCurrencyEntityToTransfer(
@@ -71,12 +60,6 @@ class RowFormatter implements RowFormatterInterface
         return $this->moneyFacade->formatWithoutSymbol($moneyTransfer);
     }
 
-    /**
-     * @param \DateTime $dateTime
-     * @param int $fkStore
-     *
-     * @return string
-     */
     public function formatDateTime(DateTime $dateTime, int $fkStore): string
     {
         $dateTime = $this->setTimezoneFromStore(
@@ -87,12 +70,6 @@ class RowFormatter implements RowFormatterInterface
         return $dateTime->format(static::DATE_FORMAT);
     }
 
-    /**
-     * @param \DateTime $dateTime
-     * @param int $fkStore
-     *
-     * @return \DateTime
-     */
     protected function setTimezoneFromStore(DateTime $dateTime, int $fkStore): DateTime
     {
         $storeTransfer = $this->storeFacade->getStoreById($fkStore);
@@ -101,12 +78,6 @@ class RowFormatter implements RowFormatterInterface
         return $dateTime->setTimezone($timeZone);
     }
 
-    /**
-     * @param int $amount
-     * @param \Generated\Shared\Transfer\CurrencyTransfer $currencyTransfer
-     *
-     * @return \Generated\Shared\Transfer\MoneyTransfer
-     */
     protected function createMoneyTransfer(int $amount, CurrencyTransfer $currencyTransfer): MoneyTransfer
     {
         $moneyTransfer = new MoneyTransfer();

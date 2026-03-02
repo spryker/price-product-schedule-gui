@@ -21,11 +21,6 @@ class PriceProductScheduleTableForEditList extends AbstractPriceProductScheduleT
      */
     protected const COL_ACTIONS = 'actions';
 
-    /**
-     * @param \Spryker\Zed\PriceProductScheduleGui\Communication\Formatter\RowFormatterInterface $rowFormatter
-     * @param \Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductScheduleQuery $priceProductScheduleQuery
-     * @param int $idPriceProductScheduleList
-     */
     public function __construct(
         RowFormatterInterface $rowFormatter,
         SpyPriceProductScheduleQuery $priceProductScheduleQuery,
@@ -38,9 +33,6 @@ class PriceProductScheduleTableForEditList extends AbstractPriceProductScheduleT
         ])->build();
     }
 
-    /**
-     * @return array
-     */
     protected function getCustomHeaders(): array
     {
         return [
@@ -48,11 +40,6 @@ class PriceProductScheduleTableForEditList extends AbstractPriceProductScheduleT
         ];
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return \Spryker\Zed\Gui\Communication\Table\TableConfiguration
-     */
     protected function setRawColumns(TableConfiguration $config): TableConfiguration
     {
         $config->setRawColumns([
@@ -62,11 +49,6 @@ class PriceProductScheduleTableForEditList extends AbstractPriceProductScheduleT
         return $config;
     }
 
-    /**
-     * @param \Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductSchedule $priceProductScheduleEntity
-     *
-     * @return array
-     */
     protected function generateCustomItemFields(SpyPriceProductSchedule $priceProductScheduleEntity): array
     {
         return [
@@ -87,11 +69,6 @@ class PriceProductScheduleTableForEditList extends AbstractPriceProductScheduleT
         ];
     }
 
-    /**
-     * @param \Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductSchedule $item
-     *
-     * @return string
-     */
     protected function generatePriceProductScheduleEditButton(SpyPriceProductSchedule $item): string
     {
         return $this->generateEditButton(
@@ -103,11 +80,6 @@ class PriceProductScheduleTableForEditList extends AbstractPriceProductScheduleT
         );
     }
 
-    /**
-     * @param \Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductSchedule $item
-     *
-     * @return string
-     */
     protected function generatePriceProductScheduleRemoveButton(SpyPriceProductSchedule $item): string
     {
         return $this->generateRemoveButton(

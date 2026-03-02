@@ -45,11 +45,6 @@ class MoneyValueSubForm extends AbstractType
      */
     public const FIELD_STORE = 'store';
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         parent::configureOptions($resolver);
@@ -116,11 +111,6 @@ class MoneyValueSubForm extends AbstractType
         $builder->addEventListener(FormEvents::POST_SUBMIT, [$this, 'onPostSubmit']);
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormEvent $event
-     *
-     * @return void
-     */
     public function onPostSubmit(FormEvent $event): void
     {
         /** @var \Generated\Shared\Transfer\MoneyValueTransfer $moneyValueTransfer */

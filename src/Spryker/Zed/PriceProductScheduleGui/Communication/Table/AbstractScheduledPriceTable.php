@@ -62,17 +62,11 @@ abstract class AbstractScheduledPriceTable extends AbstractTable
      */
     protected $rowFormatter;
 
-    /**
-     * @param \Spryker\Zed\PriceProductScheduleGui\Communication\Formatter\RowFormatterInterface $rowFormatter
-     */
     public function __construct(RowFormatterInterface $rowFormatter)
     {
         $this->rowFormatter = $rowFormatter;
     }
 
-    /**
-     * @return array
-     */
     public function getSearchTerm(): array
     {
         $searchTerm = $this->getSearchParameter();
@@ -86,11 +80,6 @@ abstract class AbstractScheduledPriceTable extends AbstractTable
         return $searchTerm;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return \Spryker\Zed\Gui\Communication\Table\TableConfiguration
-     */
     protected function configure(TableConfiguration $config): TableConfiguration
     {
         $config->setHeader([
@@ -124,11 +113,6 @@ abstract class AbstractScheduledPriceTable extends AbstractTable
         return $config;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return array
-     */
     protected function prepareData(TableConfiguration $config): array
     {
         $query = $this->prepareQuery();
@@ -143,16 +127,8 @@ abstract class AbstractScheduledPriceTable extends AbstractTable
         return $priceProductScheduleCollection;
     }
 
-    /**
-     * @return \Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductScheduleQuery
-     */
     abstract protected function prepareQuery(): SpyPriceProductScheduleQuery;
 
-    /**
-     * @param \Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductSchedule $priceProductScheduleEntity
-     *
-     * @return array
-     */
     protected function generateItem(SpyPriceProductSchedule $priceProductScheduleEntity): array
     {
         /** @var \DateTime $activeFrom */
@@ -171,23 +147,11 @@ abstract class AbstractScheduledPriceTable extends AbstractTable
         ];
     }
 
-    /**
-     * @param \DateTime $dateTime
-     * @param int $fkStore
-     *
-     * @return string
-     */
     protected function formatDateTime(DateTime $dateTime, int $fkStore): string
     {
         return $this->rowFormatter->formatDateTime($dateTime, $fkStore);
     }
 
-    /**
-     * @param int|null $amount
-     * @param \Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductSchedule $priceProductScheduleEntity
-     *
-     * @return string|null
-     */
     protected function formatMoney(?int $amount, SpyPriceProductSchedule $priceProductScheduleEntity): ?string
     {
         if ($amount === null) {
@@ -210,11 +174,6 @@ abstract class AbstractScheduledPriceTable extends AbstractTable
         ];
     }
 
-    /**
-     * @param \Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductSchedule $item
-     *
-     * @return string
-     */
     protected function generatePriceProductScheduleEditButton(SpyPriceProductSchedule $item): string
     {
         return $this->generateEditButton(
@@ -225,11 +184,6 @@ abstract class AbstractScheduledPriceTable extends AbstractTable
         );
     }
 
-    /**
-     * @param \Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductSchedule $item
-     *
-     * @return string
-     */
     protected function generatePriceProductScheduleRemoveButton(SpyPriceProductSchedule $item): string
     {
         return $this->generateRemoveButton(
@@ -252,9 +206,6 @@ abstract class AbstractScheduledPriceTable extends AbstractTable
             && is_scalar($searchTerm[static::PARAMETER_VALUE]);
     }
 
-    /**
-     * @return array
-     */
     protected function getDefaultSearchTerm(): array
     {
         return [
@@ -262,11 +213,6 @@ abstract class AbstractScheduledPriceTable extends AbstractTable
         ];
     }
 
-    /**
-     * @param string $moneyValue
-     *
-     * @return string
-     */
     protected function normalizeMoneyValue(string $moneyValue): string
     {
         $moneyValue = str_replace('.', '', $moneyValue);

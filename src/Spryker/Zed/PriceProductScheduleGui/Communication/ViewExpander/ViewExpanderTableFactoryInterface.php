@@ -12,24 +12,11 @@ use Spryker\Zed\PriceProductScheduleGui\Communication\Table\PriceProductSchedule
 
 interface ViewExpanderTableFactoryInterface
 {
-    /**
-     * @param int $idProductAbstract
-     * @param int $idPriceType
-     *
-     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\Table\PriceProductScheduleAbstractTable
-     */
     public function createPriceProductScheduleAbstractTable(
         int $idProductAbstract,
         int $idPriceType
     ): PriceProductScheduleAbstractTable;
 
-    /**
-     * @param int $idProductConcrete
-     * @param int $idProductAbstract
-     * @param int $idPriceType
-     *
-     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\Table\PriceProductScheduleConcreteTable
-     */
     public function createPriceProductScheduleConcreteTable(
         int $idProductConcrete,
         int $idProductAbstract,

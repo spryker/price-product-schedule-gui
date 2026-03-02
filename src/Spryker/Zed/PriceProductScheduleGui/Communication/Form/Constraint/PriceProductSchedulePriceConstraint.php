@@ -16,17 +16,11 @@ class PriceProductSchedulePriceConstraint extends Constraint
      */
     protected const VALIDATION_MESSAGE = 'Net price or gross price must be filled';
 
-    /**
-     * @return string
-     */
     public function getTargets(): string
     {
         return static::CLASS_CONSTRAINT;
     }
 
-    /**
-     * @return string
-     */
     public function getMessage(): string
     {
         return static::VALIDATION_MESSAGE;

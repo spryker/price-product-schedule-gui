@@ -27,25 +27,16 @@ class PriceProductScheduleUniqueConstraint extends Constraint
      */
     protected $priceProductScheduleFacade;
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Dependency\Facade\PriceProductScheduleGuiToPriceProductScheduleFacadeInterface
-     */
     public function getPriceProductScheduleFacade(): PriceProductScheduleGuiToPriceProductScheduleFacadeInterface
     {
         return $this->priceProductScheduleFacade;
     }
 
-    /**
-     * @return string
-     */
     public function getTargets(): string
     {
         return static::CLASS_CONSTRAINT;
     }
 
-    /**
-     * @return string
-     */
     public function getMessage(): string
     {
         return static::VALIDATION_MESSAGE;

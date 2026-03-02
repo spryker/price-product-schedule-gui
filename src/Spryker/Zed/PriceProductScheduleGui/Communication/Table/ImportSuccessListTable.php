@@ -59,11 +59,6 @@ class ImportSuccessListTable extends AbstractTable
      */
     protected $priceProductScheduleGuiConfig;
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductScheduleListTransfer $priceProductScheduleListTransfer
-     * @param \Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductScheduleQuery $priceProductScheduleQuery
-     * @param \Spryker\Zed\PriceProductScheduleGui\PriceProductScheduleGuiConfig $priceProductScheduleGuiConfig
-     */
     public function __construct(
         PriceProductScheduleListTransfer $priceProductScheduleListTransfer,
         SpyPriceProductScheduleQuery $priceProductScheduleQuery,
@@ -74,11 +69,6 @@ class ImportSuccessListTable extends AbstractTable
         $this->priceProductScheduleGuiConfig = $priceProductScheduleGuiConfig;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return \Spryker\Zed\Gui\Communication\Table\TableConfiguration
-     */
     protected function configure(TableConfiguration $config): TableConfiguration
     {
         $fields = $this->priceProductScheduleGuiConfig->getFieldsList();
@@ -103,11 +93,6 @@ class ImportSuccessListTable extends AbstractTable
         return $config;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return array
-     */
     protected function prepareData(TableConfiguration $config): array
     {
         $query = $this->prepareQuery();
@@ -118,11 +103,6 @@ class ImportSuccessListTable extends AbstractTable
         return $this->mapPriceProductScheduleCollection($priceProductScheduleCollection);
     }
 
-    /**
-     * @param \Propel\Runtime\Collection\ObjectCollection $priceProductScheduleCollection
-     *
-     * @return array
-     */
     protected function mapPriceProductScheduleCollection(ObjectCollection $priceProductScheduleCollection): array
     {
         $priceProductScheduleList = [];
@@ -142,9 +122,6 @@ class ImportSuccessListTable extends AbstractTable
         return $priceProductScheduleList;
     }
 
-    /**
-     * @return \Propel\Runtime\ActiveQuery\ModelCriteria
-     */
     protected function prepareQuery(): ModelCriteria
     {
         return $this->priceProductScheduleQuery

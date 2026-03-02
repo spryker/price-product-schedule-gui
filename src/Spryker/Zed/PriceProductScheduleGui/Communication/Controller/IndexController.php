@@ -31,11 +31,6 @@ class IndexController extends AbstractController
      */
     public const REQUEST_KEY_ID_PRICE_TYPE = 'id-price-type';
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
-     */
     public function abstractProductTableAction(Request $request): JsonResponse
     {
         $idProductAbstract = $request->query->getInt(static::REQUEST_KEY_ID_PRODUCT_ABSTRACT);
@@ -48,11 +43,6 @@ class IndexController extends AbstractController
         );
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
-     */
     public function concreteProductTableAction(Request $request): JsonResponse
     {
         $idProductConcrete = $request->query->getInt(static::REQUEST_KEY_ID_PRODUCT_CONCRETE);

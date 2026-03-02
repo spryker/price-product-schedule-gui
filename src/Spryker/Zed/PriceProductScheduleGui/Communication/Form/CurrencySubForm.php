@@ -26,11 +26,6 @@ class CurrencySubForm extends AbstractType
      */
     public const FIELD_ID_CURRENCY = 'idCurrency';
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefined([
@@ -71,11 +66,6 @@ class CurrencySubForm extends AbstractType
         return $this;
     }
 
-    /**
-     * @param int|null $idStore
-     *
-     * @return array
-     */
     protected function getCurrencyChoices(?int $idStore): array
     {
         if ($idStore === null) {
@@ -89,11 +79,6 @@ class CurrencySubForm extends AbstractType
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreTransfer|null $formData
-     *
-     * @return int|null
-     */
     protected function findIdStoreFromFormData(?StoreTransfer $formData): ?int
     {
         if ($formData === null) {

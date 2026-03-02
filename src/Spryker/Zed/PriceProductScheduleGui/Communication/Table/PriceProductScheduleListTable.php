@@ -190,10 +190,6 @@ class PriceProductScheduleListTable extends AbstractTable
      */
     protected $utilDateTimeService;
 
-    /**
-     * @param \Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductScheduleListQuery $priceProductScheduleListQuery
-     * @param \Spryker\Zed\PriceProductScheduleGui\Dependency\Service\PriceProductScheduleGuiToUtilDateTimeServiceInterface $utilDateTimeService
-     */
     public function __construct(
         SpyPriceProductScheduleListQuery $priceProductScheduleListQuery,
         PriceProductScheduleGuiToUtilDateTimeServiceInterface $utilDateTimeService
@@ -202,11 +198,6 @@ class PriceProductScheduleListTable extends AbstractTable
         $this->utilDateTimeService = $utilDateTimeService;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return \Spryker\Zed\Gui\Communication\Table\TableConfiguration
-     */
     protected function configure(TableConfiguration $config): TableConfiguration
     {
         $config->setHeader([
@@ -242,11 +233,6 @@ class PriceProductScheduleListTable extends AbstractTable
         return $config;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return array
-     */
     protected function prepareData(TableConfiguration $config): array
     {
         $query = $this->prepareQuery();
@@ -274,11 +260,6 @@ class PriceProductScheduleListTable extends AbstractTable
         return $priceProductScheduleList;
     }
 
-    /**
-     * @param \Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductScheduleList $priceProductScheduleListEntity
-     *
-     * @return array
-     */
     protected function mapPriceProductScheduleListEntityToTableDataArray(
         SpyPriceProductScheduleList $priceProductScheduleListEntity
     ): array {
@@ -300,21 +281,11 @@ class PriceProductScheduleListTable extends AbstractTable
         return $priceProductScheduleListTableDataArray;
     }
 
-    /**
-     * @param \Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductScheduleList $priceProductScheduleListEntity
-     *
-     * @return string
-     */
     protected function prepareStatusField(SpyPriceProductScheduleList $priceProductScheduleListEntity): string
     {
         return $priceProductScheduleListEntity->getIsActive() ? static::STATUS_PUBLISHED : static::STATUS_DRAFT;
     }
 
-    /**
-     * @param \Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductScheduleList $priceProductScheduleListEntity
-     *
-     * @return string
-     */
     protected function prepareImportedByField(SpyPriceProductScheduleList $priceProductScheduleListEntity): string
     {
         $createdAtString = $this->utilDateTimeService->formatDateTimeToCustomFormat(
@@ -362,11 +333,6 @@ class PriceProductScheduleListTable extends AbstractTable
             ->groupBy(SpyPriceProductScheduleListTableMap::COL_ID_PRICE_PRODUCT_SCHEDULE_LIST);
     }
 
-    /**
-     * @param \Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductScheduleList $priceProductScheduleListEntity
-     *
-     * @return string
-     */
     protected function buildLinks(SpyPriceProductScheduleList $priceProductScheduleListEntity): string
     {
         $actionButtons = [
@@ -379,11 +345,6 @@ class PriceProductScheduleListTable extends AbstractTable
         return implode(' ', $actionButtons);
     }
 
-    /**
-     * @param \Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductScheduleList $priceProductScheduleListEntity
-     *
-     * @return string
-     */
     protected function generatePriceProductScheduleListViewButton(
         SpyPriceProductScheduleList $priceProductScheduleListEntity
     ): string {
@@ -404,11 +365,6 @@ class PriceProductScheduleListTable extends AbstractTable
         );
     }
 
-    /**
-     * @param \Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductScheduleList $priceProductScheduleListEntity
-     *
-     * @return string
-     */
     protected function generatePriceProductScheduleListEditButton(
         SpyPriceProductScheduleList $priceProductScheduleListEntity
     ): string {
@@ -429,11 +385,6 @@ class PriceProductScheduleListTable extends AbstractTable
         );
     }
 
-    /**
-     * @param \Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductScheduleList $priceProductScheduleListEntity
-     *
-     * @return string
-     */
     protected function generatePriceProductScheduleListDownloadButton(
         SpyPriceProductScheduleList $priceProductScheduleListEntity
     ): string {
@@ -445,11 +396,6 @@ class PriceProductScheduleListTable extends AbstractTable
         );
     }
 
-    /**
-     * @param \Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductScheduleList $priceProductScheduleListEntity
-     *
-     * @return string
-     */
     protected function generatePriceProductScheduleListDeleteButton(
         SpyPriceProductScheduleList $priceProductScheduleListEntity
     ): string {

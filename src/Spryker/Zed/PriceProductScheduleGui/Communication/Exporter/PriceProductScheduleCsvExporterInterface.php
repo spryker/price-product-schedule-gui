@@ -11,10 +11,5 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 
 interface PriceProductScheduleCsvExporterInterface
 {
-    /**
-     * @param int $idPriceProductScheduleList
-     *
-     * @return \Symfony\Component\HttpFoundation\StreamedResponse
-     */
     public function exportToCsvFile(int $idPriceProductScheduleList): StreamedResponse;
 }

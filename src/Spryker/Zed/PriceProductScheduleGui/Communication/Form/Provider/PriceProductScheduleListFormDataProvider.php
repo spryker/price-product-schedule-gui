@@ -11,11 +11,6 @@ use Generated\Shared\Transfer\PriceProductScheduleListTransfer;
 
 class PriceProductScheduleListFormDataProvider
 {
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductScheduleListTransfer $priceProductScheduleListTransfer
-     *
-     * @return \Generated\Shared\Transfer\PriceProductScheduleListTransfer
-     */
     public function getData(PriceProductScheduleListTransfer $priceProductScheduleListTransfer): PriceProductScheduleListTransfer
     {
         return $priceProductScheduleListTransfer;

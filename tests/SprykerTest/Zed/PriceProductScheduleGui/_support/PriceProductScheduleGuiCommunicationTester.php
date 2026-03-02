@@ -31,9 +31,6 @@ class PriceProductScheduleGuiCommunicationTester extends Actor
 {
     use _generated\PriceProductScheduleGuiCommunicationTesterActions;
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Dependency\Service\PriceProductScheduleGuiToUtilDateTimeServiceInterface
-     */
     public function getUtilDateTimeService(): PriceProductScheduleGuiToUtilDateTimeServiceInterface
     {
         return new PriceProductScheduleGuiToUtilDateTimeServiceBridge(

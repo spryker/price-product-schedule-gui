@@ -77,11 +77,6 @@ class DeleteScheduleListController extends AbstractController
         ]);
     }
 
-    /**
-     * @param int $idPriceProductScheduleList
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     protected function handleSubmitForm(int $idPriceProductScheduleList): RedirectResponse
     {
         $priceProductScheduleListResponseTransfer = $this->getFactory()
@@ -99,11 +94,6 @@ class DeleteScheduleListController extends AbstractController
         return $this->redirectResponse(static::REDIRECT_URL);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductScheduleListResponseTransfer $priceProductScheduleListResponseTransfer
-     *
-     * @return void
-     */
     protected function setErrors(PriceProductScheduleListResponseTransfer $priceProductScheduleListResponseTransfer): void
     {
         foreach ($priceProductScheduleListResponseTransfer->getErrors() as $priceProductScheduleListErrorTransfer) {
@@ -111,11 +101,6 @@ class DeleteScheduleListController extends AbstractController
         }
     }
 
-    /**
-     * @param int $idPriceProductScheduleList
-     *
-     * @return \Generated\Shared\Transfer\PriceProductScheduleListTransfer
-     */
     protected function createPriceProductScheduleListTransfer(int $idPriceProductScheduleList): PriceProductScheduleListTransfer
     {
         return (new PriceProductScheduleListTransfer())

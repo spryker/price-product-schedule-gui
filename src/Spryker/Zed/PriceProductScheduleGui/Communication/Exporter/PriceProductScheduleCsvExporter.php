@@ -88,10 +88,6 @@ class PriceProductScheduleCsvExporter implements PriceProductScheduleCsvExporter
      */
     protected $utilCsvService;
 
-    /**
-     * @param \Spryker\Zed\PriceProductScheduleGui\Dependency\Facade\PriceProductScheduleGuiToPriceProductScheduleFacadeInterface $priceProductScheduleFacade
-     * @param \Spryker\Zed\PriceProductScheduleGui\Dependency\Service\PriceProductScheduleGuiToUtilCsvServiceInterface $utilCsvService
-     */
     public function __construct(
         PriceProductScheduleGuiToPriceProductScheduleFacadeInterface $priceProductScheduleFacade,
         PriceProductScheduleGuiToUtilCsvServiceInterface $utilCsvService
@@ -100,11 +96,6 @@ class PriceProductScheduleCsvExporter implements PriceProductScheduleCsvExporter
         $this->utilCsvService = $utilCsvService;
     }
 
-    /**
-     * @param int $idPriceProductScheduleList
-     *
-     * @return \Symfony\Component\HttpFoundation\StreamedResponse
-     */
     public function exportToCsvFile(int $idPriceProductScheduleList): StreamedResponse
     {
         $priceProductScheduleCollection = $this->priceProductScheduleFacade
@@ -129,11 +120,6 @@ class PriceProductScheduleCsvExporter implements PriceProductScheduleCsvExporter
         return $csvFileTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CsvFileTransfer $csvFileTransfer
-     *
-     * @return \Generated\Shared\Transfer\CsvFileTransfer
-     */
     protected function setHeaders(CsvFileTransfer $csvFileTransfer): CsvFileTransfer
     {
         return $csvFileTransfer->setHeader([
@@ -195,11 +181,6 @@ class PriceProductScheduleCsvExporter implements PriceProductScheduleCsvExporter
         ];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $priceProductTransfer
-     *
-     * @return string|null
-     */
     protected function getSkuProductAsbtract(PriceProductTransfer $priceProductTransfer): ?string
     {
         if ($priceProductTransfer->getSkuProduct() === null) {

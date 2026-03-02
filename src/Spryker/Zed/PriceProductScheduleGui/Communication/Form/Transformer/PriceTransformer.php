@@ -20,9 +20,6 @@ class PriceTransformer implements DataTransformerInterface
      */
     protected $moneyFacade;
 
-    /**
-     * @param \Spryker\Zed\PriceProductScheduleGui\Dependency\Facade\PriceProductScheduleGuiToMoneyFacadeInterface $moneyFacade
-     */
     public function __construct(PriceProductScheduleGuiToMoneyFacadeInterface $moneyFacade)
     {
         $this->moneyFacade = $moneyFacade;

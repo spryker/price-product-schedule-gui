@@ -102,11 +102,6 @@ class DryRunImportController extends AbstractController
         ]);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductScheduleListResponseTransfer $priceProductScheduleListResponseTransfer
-     *
-     * @return void
-     */
     protected function setErrors(PriceProductScheduleListResponseTransfer $priceProductScheduleListResponseTransfer): void
     {
         foreach ($priceProductScheduleListResponseTransfer->getErrors() as $errorTransfer) {
@@ -114,11 +109,6 @@ class DryRunImportController extends AbstractController
         }
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
-     */
     public function tableAction(Request $request): JsonResponse
     {
         $priceProductScheduleList = (new PriceProductScheduleListTransfer())
@@ -132,11 +122,6 @@ class DryRunImportController extends AbstractController
         );
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormInterface $importForm
-     *
-     * @return \Generated\Shared\Transfer\PriceProductScheduleCsvValidationResultTransfer
-     */
     protected function validatePriceProductScheduleImportForm(
         FormInterface $importForm
     ): PriceProductScheduleCsvValidationResultTransfer {
@@ -149,12 +134,6 @@ class DryRunImportController extends AbstractController
             ->validateCsvFile($uploadedFile);
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormInterface $importForm
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Generated\Shared\Transfer\PriceProductScheduleListImportResponseTransfer
-     */
     protected function handlePriceProductScheduleImportForm(
         FormInterface $importForm,
         Request $request
@@ -183,12 +162,6 @@ class DryRunImportController extends AbstractController
             ->importPriceProductSchedules($priceProductScheduleListImportRequestTransfer);
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param string $priceProductScheduleName
-     *
-     * @return \Generated\Shared\Transfer\PriceProductScheduleListTransfer
-     */
     protected function getPriceProductScheduleListTransfer(
         Request $request,
         string $priceProductScheduleName
@@ -209,12 +182,6 @@ class DryRunImportController extends AbstractController
         return $priceProductScheduledListResponse->getPriceProductScheduleList();
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param \Symfony\Component\Form\FormInterface $priceProductScheduleImportForm
-     *
-     * @return array
-     */
     protected function prepareIndexData(Request $request, FormInterface $priceProductScheduleImportForm): array
     {
         $priceProductScheduleListImportResponseTransfer = $this->handlePriceProductScheduleImportForm(

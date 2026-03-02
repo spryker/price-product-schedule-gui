@@ -27,11 +27,6 @@ class ConcreteProductTabCreator implements ConcreteProductTabCreatorInterface
      */
     public const TAB_SCHEDULED_PRICE_TEMPLATE = '@PriceProductScheduleGui/_partials/schedule-price-concrete-tab.twig';
 
-    /**
-     * @param \Generated\Shared\Transfer\TabsViewTransfer $tabsViewTransfer
-     *
-     * @return \Generated\Shared\Transfer\TabsViewTransfer
-     */
     public function createScheduledPriceTabForProductConcrete(TabsViewTransfer $tabsViewTransfer): TabsViewTransfer
     {
         $tabItemTransfer = new TabItemTransfer();

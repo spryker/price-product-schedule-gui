@@ -89,11 +89,6 @@ class EditScheduleListController extends AbstractController
         ]);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductScheduleListTransfer $priceProductScheduleListTransfer
-     *
-     * @return \Generated\Shared\Transfer\PriceProductScheduleListTransfer
-     */
     protected function formatCreatedAt(PriceProductScheduleListTransfer $priceProductScheduleListTransfer): PriceProductScheduleListTransfer
     {
         return $priceProductScheduleListTransfer->setCreatedAt(
@@ -104,11 +99,6 @@ class EditScheduleListController extends AbstractController
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductScheduleListResponseTransfer $priceProductScheduleListResponseTransfer
-     *
-     * @return \Symfony\Component\Form\FormInterface
-     */
     protected function getForm(PriceProductScheduleListResponseTransfer $priceProductScheduleListResponseTransfer): FormInterface
     {
         $dataProvider = $this->getFactory()
@@ -121,11 +111,6 @@ class EditScheduleListController extends AbstractController
             );
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormInterface $form
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     protected function handleSubmitForm(FormInterface $form): RedirectResponse
     {
         $priceProductScheduleListResponseTransfer = $this->getFactory()
@@ -148,22 +133,12 @@ class EditScheduleListController extends AbstractController
         return $this->redirectResponse(sprintf(static::URL_PATTERN_EDIT_LIST, $idPriceProductScheduleList));
     }
 
-    /**
-     * @param int $idPriceProductScheduleList
-     *
-     * @return \Generated\Shared\Transfer\PriceProductScheduleListTransfer
-     */
     protected function createPriceProductScheduleListTransfer(int $idPriceProductScheduleList): PriceProductScheduleListTransfer
     {
         return (new PriceProductScheduleListTransfer())
             ->setIdPriceProductScheduleList($idPriceProductScheduleList);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductScheduleListResponseTransfer $priceProductScheduleListResponseTransfer
-     *
-     * @return void
-     */
     protected function setErrors(PriceProductScheduleListResponseTransfer $priceProductScheduleListResponseTransfer): void
     {
         foreach ($priceProductScheduleListResponseTransfer->getErrors() as $priceProductScheduleListErrorTransfer) {
@@ -171,11 +146,6 @@ class EditScheduleListController extends AbstractController
         }
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
-     */
     public function tableAction(Request $request): JsonResponse
     {
         $idPriceProductScheduleList = $this->castId(

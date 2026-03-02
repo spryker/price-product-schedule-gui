@@ -22,11 +22,6 @@ class PriceProductScheduleGuiToProductFacadeBridge implements PriceProductSchedu
         $this->productFacade = $productFacade;
     }
 
-    /**
-     * @param int $idConcrete
-     *
-     * @return int|null
-     */
     public function findProductAbstractIdByConcreteId(int $idConcrete): ?int
     {
         return $this->productFacade->findProductAbstractIdByConcreteId($idConcrete);

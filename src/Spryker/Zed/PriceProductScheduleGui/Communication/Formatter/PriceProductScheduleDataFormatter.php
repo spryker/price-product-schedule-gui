@@ -32,19 +32,11 @@ class PriceProductScheduleDataFormatter implements PriceProductScheduleDataForma
      */
     protected $productFacade;
 
-    /**
-     * @param \Spryker\Zed\PriceProductScheduleGui\Dependency\Facade\PriceProductScheduleGuiToProductFacadeInterface $productFacade
-     */
     public function __construct(PriceProductScheduleGuiToProductFacadeInterface $productFacade)
     {
         $this->productFacade = $productFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $priceProductTransfer
-     *
-     * @return string
-     */
     public function formatTitle(PriceProductTransfer $priceProductTransfer): string
     {
         $idProductAbstract = $priceProductTransfer->getIdProductAbstract();
@@ -57,11 +49,6 @@ class PriceProductScheduleDataFormatter implements PriceProductScheduleDataForma
         return sprintf(static::TITLE_PRODUCT_CONCRETE_PATTERN, $idProductConcrete);
     }
 
-    /**
-     * @param string|null $timezone
-     *
-     * @return string
-     */
     public function formatTimezoneText(?string $timezone): string
     {
         if ($timezone === null) {

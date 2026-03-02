@@ -79,41 +79,26 @@ use Symfony\Component\Form\FormInterface;
  */
 class PriceProductScheduleGuiCommunicationFactory extends AbstractCommunicationFactory implements ViewExpanderTableFactoryInterface
 {
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\TabCreator\AbstractProductTabCreatorInterface
-     */
     public function createAbstractProductTabCreator(): AbstractProductTabCreatorInterface
     {
         return new AbstractProductTabCreator();
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\TabCreator\ConcreteProductTabCreatorInterface
-     */
     public function createConcreteProductTabCreator(): ConcreteProductTabCreatorInterface
     {
         return new ConcreteProductTabCreator();
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\Formatter\RowFormatterInterface
-     */
     public function createRowFormatter(): RowFormatterInterface
     {
         return new RowFormatter($this->getMoneyFacade(), $this->getStoreFacade(), $this->createCurrencyMapper());
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\Mapper\CurrencyMapperInterface
-     */
     public function createCurrencyMapper(): CurrencyMapperInterface
     {
         return new CurrencyMapper();
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\ViewExpander\AbstractProductViewExpanderInterface
-     */
     public function createAbstractProductViewExpander(): AbstractProductViewExpanderInterface
     {
         return new AbstractProductViewExpander(
@@ -123,9 +108,6 @@ class PriceProductScheduleGuiCommunicationFactory extends AbstractCommunicationF
         );
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\ViewExpander\ConcreteProductViewExpanderInterface
-     */
     public function createConcreteProductViewExpander(): ConcreteProductViewExpanderInterface
     {
         return new ConcreteProductViewExpander(
@@ -135,12 +117,6 @@ class PriceProductScheduleGuiCommunicationFactory extends AbstractCommunicationF
         );
     }
 
-    /**
-     * @param int $idProductAbstract
-     * @param int $idPriceType
-     *
-     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\Table\PriceProductScheduleAbstractTable
-     */
     public function createPriceProductScheduleAbstractTable(
         int $idProductAbstract,
         int $idPriceType
@@ -153,13 +129,6 @@ class PriceProductScheduleGuiCommunicationFactory extends AbstractCommunicationF
         );
     }
 
-    /**
-     * @param int $idProductConcrete
-     * @param int $idProductAbstract
-     * @param int $idPriceType
-     *
-     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\Table\PriceProductScheduleConcreteTable
-     */
     public function createPriceProductScheduleConcreteTable(
         int $idProductConcrete,
         int $idProductAbstract,
@@ -191,20 +160,12 @@ class PriceProductScheduleGuiCommunicationFactory extends AbstractCommunicationF
             );
     }
 
-    /**
-     * @return \Symfony\Component\Form\FormInterface
-     */
     public function createPriceProductScheduleListDeleteForm(): FormInterface
     {
         return $this->getFormFactory()
             ->create(PriceProductScheduleListDeleteForm::class);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductScheduleListImportResponseTransfer $priceProductScheduleListImportResponseTransfer
-     *
-     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\Table\ImportErrorListTable
-     */
     public function createImportErrorTable(
         PriceProductScheduleListImportResponseTransfer $priceProductScheduleListImportResponseTransfer
     ): ImportErrorListTable {
@@ -214,19 +175,11 @@ class PriceProductScheduleGuiCommunicationFactory extends AbstractCommunicationF
         );
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\Table\Formatter\TableFormatterInterface
-     */
     public function createTableFormatter(): TableFormatterInterface
     {
         return new TableFormatter();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductScheduleListTransfer $priceProductScheduleListTransfer
-     *
-     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\Table\ImportSuccessListTable
-     */
     public function createImportSuccessListTable(
         PriceProductScheduleListTransfer $priceProductScheduleListTransfer
     ): ImportSuccessListTable {
@@ -237,9 +190,6 @@ class PriceProductScheduleGuiCommunicationFactory extends AbstractCommunicationF
         );
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\Table\PriceProductScheduleListTable
-     */
     public function createPriceProductScheduleListTable(): PriceProductScheduleListTable
     {
         return new PriceProductScheduleListTable(
@@ -248,9 +198,6 @@ class PriceProductScheduleGuiCommunicationFactory extends AbstractCommunicationF
         );
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\Form\Provider\PriceProductScheduleFormDataProvider
-     */
     public function createPriceProductScheduleFormDataProvider(): PriceProductScheduleFormDataProvider
     {
         return new PriceProductScheduleFormDataProvider(
@@ -261,9 +208,6 @@ class PriceProductScheduleGuiCommunicationFactory extends AbstractCommunicationF
         );
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\Exporter\PriceProductScheduleCsvExporterInterface
-     */
     public function createPriceProductScheduleCsvExporter(): PriceProductScheduleCsvExporterInterface
     {
         return new PriceProductScheduleCsvExporter(
@@ -272,12 +216,6 @@ class PriceProductScheduleGuiCommunicationFactory extends AbstractCommunicationF
         );
     }
 
-    /**
-     * @param \Spryker\Zed\PriceProductScheduleGui\Communication\Form\Provider\PriceProductScheduleFormDataProvider $formDataProvider
-     * @param \Generated\Shared\Transfer\PriceProductScheduleTransfer $priceProductScheduleTransfer
-     *
-     * @return \Symfony\Component\Form\FormInterface
-     */
     public function createPriceProductScheduleForm(
         PriceProductScheduleFormDataProvider $formDataProvider,
         PriceProductScheduleTransfer $priceProductScheduleTransfer
@@ -291,11 +229,6 @@ class PriceProductScheduleGuiCommunicationFactory extends AbstractCommunicationF
         );
     }
 
-    /**
-     * @param int $idPriceProductScheduleList
-     *
-     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\Table\PriceProductScheduleTable
-     */
     public function createPriceProductScheduleTable(int $idPriceProductScheduleList): PriceProductScheduleTable
     {
         return new PriceProductScheduleTable(
@@ -305,11 +238,6 @@ class PriceProductScheduleGuiCommunicationFactory extends AbstractCommunicationF
         );
     }
 
-    /**
-     * @param int $idPriceProductScheduleList
-     *
-     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\Table\PriceProductScheduleTableForEditList
-     */
     public function createPriceProductScheduleTableForEditList(int $idPriceProductScheduleList): PriceProductScheduleTableForEditList
     {
         return new PriceProductScheduleTableForEditList(
@@ -319,21 +247,11 @@ class PriceProductScheduleGuiCommunicationFactory extends AbstractCommunicationF
         );
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\Form\Provider\PriceProductScheduleDeleteFormDataProvider
-     */
     public function createPriceProductScheduleDeleteFormDataProvider(): PriceProductScheduleDeleteFormDataProvider
     {
         return new PriceProductScheduleDeleteFormDataProvider();
     }
 
-    /**
-     * @param \Spryker\Zed\PriceProductScheduleGui\Communication\Form\Provider\PriceProductScheduleDeleteFormDataProvider $dataProvider
-     * @param \Generated\Shared\Transfer\PriceProductScheduleTransfer $priceProductScheduleTransfer
-     * @param string $redirectUrl
-     *
-     * @return \Symfony\Component\Form\FormInterface
-     */
     public function createPriceProductScheduleDeleteForm(
         PriceProductScheduleDeleteFormDataProvider $dataProvider,
         PriceProductScheduleTransfer $priceProductScheduleTransfer,
@@ -346,20 +264,11 @@ class PriceProductScheduleGuiCommunicationFactory extends AbstractCommunicationF
         );
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\Form\Provider\PriceProductScheduleListFormDataProvider
-     */
     public function createPriceProductScheduleListFormDataProvider(): PriceProductScheduleListFormDataProvider
     {
         return new PriceProductScheduleListFormDataProvider();
     }
 
-    /**
-     * @param \Spryker\Zed\PriceProductScheduleGui\Communication\Form\Provider\PriceProductScheduleListFormDataProvider $dataProvider
-     * @param \Generated\Shared\Transfer\PriceProductScheduleListTransfer $priceProductScheduleListTransfer
-     *
-     * @return \Symfony\Component\Form\FormInterface
-     */
     public function createPriceProductScheduleListForm(
         PriceProductScheduleListFormDataProvider $dataProvider,
         PriceProductScheduleListTransfer $priceProductScheduleListTransfer
@@ -370,25 +279,16 @@ class PriceProductScheduleGuiCommunicationFactory extends AbstractCommunicationF
         );
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\Form\Constraint\PriceProductScheduleDateConstraint
-     */
     public function createPriceProductScheduleDateConstraint(): PriceProductScheduleDateConstraint
     {
         return new PriceProductScheduleDateConstraint();
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\Form\Constraint\PriceProductSchedulePriceConstraint
-     */
     public function createPriceProductSchedulePriceConstraint(): PriceProductSchedulePriceConstraint
     {
         return new PriceProductSchedulePriceConstraint();
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\Form\Constraint\PriceProductScheduleUniqueConstraint
-     */
     public function createPriceProductScheduleUniqueConstraint(): PriceProductScheduleUniqueConstraint
     {
         return new PriceProductScheduleUniqueConstraint([
@@ -415,9 +315,6 @@ class PriceProductScheduleGuiCommunicationFactory extends AbstractCommunicationF
         return new DateTransformer();
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\Extractor\PriceProductScheduleDataExtractorInterface
-     */
     public function createPriceProductScheduleDataExtractor(): PriceProductScheduleDataExtractorInterface
     {
         return new PriceProductScheduleDataExtractor(
@@ -426,9 +323,6 @@ class PriceProductScheduleGuiCommunicationFactory extends AbstractCommunicationF
         );
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\Formatter\PriceProductScheduleDataFormatterInterface
-     */
     public function createPriceProductScheduleDataFormatter(): PriceProductScheduleDataFormatterInterface
     {
         return new PriceProductScheduleDataFormatter(
@@ -436,33 +330,21 @@ class PriceProductScheduleGuiCommunicationFactory extends AbstractCommunicationF
         );
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\Redirect\PriceProductScheduleRedirectInterface
-     */
     public function createPriceProductScheduleRedirectToProductAbstract(): PriceProductScheduleRedirectInterface
     {
         return new PriceProductScheduleRedirectToProductAbstract();
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\Redirect\PriceProductScheduleRedirectInterface
-     */
     public function createPriceProductScheduleRedirectToProductConcrete(): PriceProductScheduleRedirectInterface
     {
         return new PriceProductScheduleRedirectToProductConcrete();
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\Redirect\PriceProductScheduleRedirectInterface
-     */
     public function createPriceProductScheduleRedirectToScheduleList(): PriceProductScheduleRedirectInterface
     {
         return new PriceProductScheduleRedirectToScheduleList();
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\Redirect\PriceProductScheduleRedirectStrategyResolverInterface
-     */
     public function createPriceProductScheduleRedirectStrategyResolver(): PriceProductScheduleRedirectStrategyResolverInterface
     {
         return new PriceProductScheduleRedirectStrategyResolver([
@@ -472,97 +354,61 @@ class PriceProductScheduleGuiCommunicationFactory extends AbstractCommunicationF
         ]);
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Dependency\Facade\PriceProductScheduleGuiToPriceProductFacadeInterface
-     */
     public function getPriceProductFacade(): PriceProductScheduleGuiToPriceProductFacadeInterface
     {
         return $this->getProvidedDependency(PriceProductScheduleGuiDependencyProvider::FACADE_PRICE_PRODUCT);
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Dependency\Facade\PriceProductScheduleGuiToStoreFacadeInterface
-     */
     public function getStoreFacade(): PriceProductScheduleGuiToStoreFacadeInterface
     {
         return $this->getProvidedDependency(PriceProductScheduleGuiDependencyProvider::FACADE_STORE);
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Dependency\Facade\PriceProductScheduleGuiToTranslatorFacadeInterface
-     */
     public function getTranslatorFacade(): PriceProductScheduleGuiToTranslatorFacadeInterface
     {
         return $this->getProvidedDependency(PriceProductScheduleGuiDependencyProvider::FACADE_TRANSLATOR);
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Dependency\Facade\PriceProductScheduleGuiToMoneyFacadeInterface
-     */
     public function getMoneyFacade(): PriceProductScheduleGuiToMoneyFacadeInterface
     {
         return $this->getProvidedDependency(PriceProductScheduleGuiDependencyProvider::FACADE_MONEY);
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Dependency\Facade\PriceProductScheduleGuiToPriceProductScheduleFacadeInterface
-     */
     public function getPriceProductScheduleFacade(): PriceProductScheduleGuiToPriceProductScheduleFacadeInterface
     {
         return $this->getProvidedDependency(PriceProductScheduleGuiDependencyProvider::FACADE_PRICE_PRODUCT_SCHEDULE);
     }
 
-    /**
-     * @return \Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductScheduleQuery
-     */
     public function getPriceProductScheduleQuery(): SpyPriceProductScheduleQuery
     {
         return $this->getProvidedDependency(PriceProductScheduleGuiDependencyProvider::PROPEL_QUERY_PRICE_PRODUCT_SCHEDULE);
     }
 
-    /**
-     * @return \Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductScheduleListQuery
-     */
     public function getPriceProductScheduleListPropelQuery(): SpyPriceProductScheduleListQuery
     {
         return $this->getProvidedDependency(PriceProductScheduleGuiDependencyProvider::PROPEL_QUERY_PRICE_PRODUCT_SCHEDULE_LIST);
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Dependency\Service\PriceProductScheduleGuiToUtilCsvServiceInterface
-     */
     public function getUtilCsvService(): PriceProductScheduleGuiToUtilCsvServiceInterface
     {
         return $this->getProvidedDependency(PriceProductScheduleGuiDependencyProvider::SERVICE_UTIL_CSV);
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Dependency\Facade\PriceProductScheduleGuiToCurrencyFacadeInterface
-     */
     public function getCurrencyFacade(): PriceProductScheduleGuiToCurrencyFacadeInterface
     {
         return $this->getProvidedDependency(PriceProductScheduleGuiDependencyProvider::FACADE_CURRENCY);
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Dependency\Facade\PriceProductScheduleGuiToProductFacadeInterface
-     */
     public function getProductFacade(): PriceProductScheduleGuiToProductFacadeInterface
     {
         return $this->getProvidedDependency(PriceProductScheduleGuiDependencyProvider::FACADE_PRODUCT);
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Dependency\Service\PriceProductScheduleGuiToUtilDateTimeServiceInterface
-     */
     public function getUtilDateTimeService(): PriceProductScheduleGuiToUtilDateTimeServiceInterface
     {
         return $this->getProvidedDependency(PriceProductScheduleGuiDependencyProvider::SERVICE_UTIL_DATE_TIME);
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductScheduleGui\Dependency\Facade\PriceProductScheduleGuiToLocaleFacadeInterface
-     */
     public function getLocaleFacade(): PriceProductScheduleGuiToLocaleFacadeInterface
     {
         return $this->getProvidedDependency(PriceProductScheduleGuiDependencyProvider::FACADE_LOCALE);

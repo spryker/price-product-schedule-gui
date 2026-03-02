@@ -11,11 +11,6 @@ use Generated\Shared\Transfer\MoneyTransfer;
 
 interface PriceProductScheduleGuiToMoneyFacadeInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\MoneyTransfer $moneyTransfer
-     *
-     * @return string
-     */
     public function formatWithoutSymbol(MoneyTransfer $moneyTransfer): string;
 
     /**

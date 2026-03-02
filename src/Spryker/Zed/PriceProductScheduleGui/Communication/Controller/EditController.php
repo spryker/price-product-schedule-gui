@@ -113,12 +113,6 @@ class EditController extends AbstractController
         return $this->viewResponse($viewData);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductScheduleTransfer $priceProductScheduleTransfer
-     * @param int|null $idPriceProductScheduleList
-     *
-     * @return \Generated\Shared\Transfer\PriceProductScheduleRedirectTransfer
-     */
     protected function createPriceProductScheduleRedirectTransfer(
         PriceProductScheduleTransfer $priceProductScheduleTransfer,
         ?int $idPriceProductScheduleList
@@ -132,13 +126,6 @@ class EditController extends AbstractController
             ->setIdProductAbstract($priceProductTransfer->getIdProductAbstract());
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormInterface $form
-     * @param \Generated\Shared\Transfer\PriceProductScheduleTransfer $priceProductScheduleTransfer
-     * @param \Generated\Shared\Transfer\PriceProductScheduleRedirectTransfer $priceProductScheduleRedirectTransfer
-     *
-     * @return array
-     */
     protected function prepareViewResponseData(
         FormInterface $form,
         PriceProductScheduleTransfer $priceProductScheduleTransfer,
@@ -161,12 +148,6 @@ class EditController extends AbstractController
         ];
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormInterface $form
-     * @param string $redirectUrl
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     protected function handleSubmitForm(FormInterface $form, string $redirectUrl): RedirectResponse
     {
         /** @var \Generated\Shared\Transfer\PriceProductScheduleTransfer $priceProductScheduleTransfer */

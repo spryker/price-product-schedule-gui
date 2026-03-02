@@ -11,11 +11,5 @@ use DateTime;
 
 interface PriceProductScheduleGuiToUtilDateTimeServiceInterface
 {
-    /**
-     * @param \DateTime|string $date
-     * @param string $format
-     *
-     * @return string
-     */
     public function formatDateTimeToCustomFormat(DateTime|string $date, string $format): string;
 }

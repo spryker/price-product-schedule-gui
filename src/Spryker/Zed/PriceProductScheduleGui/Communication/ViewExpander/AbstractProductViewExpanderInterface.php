@@ -9,10 +9,5 @@ namespace Spryker\Zed\PriceProductScheduleGui\Communication\ViewExpander;
 
 interface AbstractProductViewExpanderInterface
 {
-    /**
-     * @param array $viewData
-     *
-     * @return array
-     */
     public function expandAbstractProductEditViewData(array $viewData): array;
 }

@@ -21,11 +21,6 @@ class DownloadScheduleListController extends AbstractController
      */
     protected const PARAM_ID_PRICE_PRODUCT_SCHEDULE_LIST = 'id-price-product-schedule-list';
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\StreamedResponse
-     */
     public function indexAction(Request $request): StreamedResponse
     {
         $idPriceProductSchedulelist = $request->query->getInt(static::PARAM_ID_PRICE_PRODUCT_SCHEDULE_LIST);

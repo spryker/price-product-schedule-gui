@@ -41,11 +41,6 @@ class PriceProductSubForm extends AbstractType
      */
     public const FIELD_CONCRETE_SKU = 'skuProduct';
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         parent::configureOptions($resolver);

@@ -99,12 +99,6 @@ class CreateController extends AbstractController
         ]);
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormInterface $form
-     * @param string $redirectUrl
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     protected function handleSubmitForm(FormInterface $form, string $redirectUrl): RedirectResponse
     {
         /** @var \Generated\Shared\Transfer\PriceProductScheduleTransfer $priceProductScheduleTransfer */
@@ -126,12 +120,6 @@ class CreateController extends AbstractController
         return $this->redirectResponse($redirectUrl);
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param \Generated\Shared\Transfer\PriceProductScheduleTransfer $priceProductScheduleTransfer
-     *
-     * @return \Generated\Shared\Transfer\PriceProductScheduleTransfer
-     */
     protected function setProductIdentifierFromRequest(
         Request $request,
         PriceProductScheduleTransfer $priceProductScheduleTransfer
@@ -148,13 +136,6 @@ class CreateController extends AbstractController
         return $priceProductScheduleTransfer->setPriceProduct($priceProductTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $priceProductTransfer
-     * @param int|null $idProduct
-     * @param int|null $idProductAbstract
-     *
-     * @return \Generated\Shared\Transfer\PriceProductTransfer
-     */
     protected function setProductIdentifierToPriceProductTransfer(
         PriceProductTransfer $priceProductTransfer,
         ?int $idProduct,
@@ -167,11 +148,6 @@ class CreateController extends AbstractController
         return $priceProductTransfer->setIdProduct($idProduct);
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return string
-     */
     protected function getRedirectUrlFromRequest(Request $request): string
     {
         $idProductAbstract = $request->query->get(static::PARAM_ID_PRODUCT_ABSTRACT);

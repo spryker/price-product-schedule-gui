@@ -67,11 +67,6 @@ class ViewScheduleListController extends AbstractController
         ]);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductScheduleListTransfer $priceProductScheduleListTransfer
-     *
-     * @return \Generated\Shared\Transfer\PriceProductScheduleListTransfer
-     */
     protected function formatCreatedAt(PriceProductScheduleListTransfer $priceProductScheduleListTransfer): PriceProductScheduleListTransfer
     {
         return $priceProductScheduleListTransfer->setCreatedAt(
@@ -82,22 +77,12 @@ class ViewScheduleListController extends AbstractController
         );
     }
 
-    /**
-     * @param int $idPriceProductScheduleList
-     *
-     * @return \Generated\Shared\Transfer\PriceProductScheduleListTransfer
-     */
     protected function createPriceProductScheduleListTransfer(int $idPriceProductScheduleList): PriceProductScheduleListTransfer
     {
         return (new PriceProductScheduleListTransfer())
             ->setIdPriceProductScheduleList($idPriceProductScheduleList);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductScheduleListResponseTransfer $priceProductScheduleListResponseTransfer
-     *
-     * @return void
-     */
     protected function setErrors(PriceProductScheduleListResponseTransfer $priceProductScheduleListResponseTransfer): void
     {
         foreach ($priceProductScheduleListResponseTransfer->getErrors() as $priceProductScheduleListErrorTransfer) {
@@ -105,11 +90,6 @@ class ViewScheduleListController extends AbstractController
         }
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
-     */
     public function tableAction(Request $request): JsonResponse
     {
         $idPriceProductScheduleList = $this->castId(

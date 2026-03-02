@@ -33,10 +33,6 @@ class PriceProductScheduleDataExtractor implements PriceProductScheduleDataExtra
      */
     protected $priceProductScheduleDataFormatter;
 
-    /**
-     * @param \Spryker\Zed\PriceProductScheduleGui\Dependency\Facade\PriceProductScheduleGuiToStoreFacadeInterface $storeFacade
-     * @param \Spryker\Zed\PriceProductScheduleGui\Communication\Formatter\PriceProductScheduleDataFormatterInterface $priceProductScheduleDataFormatter
-     */
     public function __construct(
         PriceProductScheduleGuiToStoreFacadeInterface $storeFacade,
         PriceProductScheduleDataFormatterInterface $priceProductScheduleDataFormatter
@@ -80,11 +76,6 @@ class PriceProductScheduleDataExtractor implements PriceProductScheduleDataExtra
         return $this->priceProductScheduleDataFormatter->formatTimezoneText($timezone);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductScheduleTransfer $priceProductScheduleTransfer
-     *
-     * @return string
-     */
     public function extractTimezoneFromPriceProductScheduledTransfer(
         PriceProductScheduleTransfer $priceProductScheduleTransfer
     ): string {
@@ -96,11 +87,6 @@ class PriceProductScheduleDataExtractor implements PriceProductScheduleDataExtra
         return $storeTransfer->getTimezone();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductScheduleTransfer $priceProductScheduleTransfer
-     *
-     * @return array
-     */
     public function extractTitleAndIdProductFromPriceProductScheduleTransfer(
         PriceProductScheduleTransfer $priceProductScheduleTransfer
     ): array {

@@ -65,12 +65,6 @@ class PriceProductScheduleFormDataProvider
      */
     protected $localeFacade;
 
-    /**
-     * @param \Spryker\Zed\PriceProductScheduleGui\Dependency\Facade\PriceProductScheduleGuiToPriceProductFacadeInterface $priceProductFacade
-     * @param \Spryker\Zed\PriceProductScheduleGui\Dependency\Facade\PriceProductScheduleGuiToStoreFacadeInterface $storeFacade
-     * @param \Spryker\Zed\PriceProductScheduleGui\Dependency\Facade\PriceProductScheduleGuiToCurrencyFacadeInterface $currencyFacade
-     * @param \Spryker\Zed\PriceProductScheduleGui\Dependency\Facade\PriceProductScheduleGuiToLocaleFacadeInterface $localeFacade
-     */
     public function __construct(
         PriceProductScheduleGuiToPriceProductFacadeInterface $priceProductFacade,
         PriceProductScheduleGuiToStoreFacadeInterface $storeFacade,
@@ -83,9 +77,6 @@ class PriceProductScheduleFormDataProvider
         $this->localeFacade = $localeFacade;
     }
 
-    /**
-     * @return array
-     */
     protected function getPriceTypeValues(): array
     {
         $priceTypes = $this->priceProductFacade->getPriceTypeValues();
@@ -98,9 +89,6 @@ class PriceProductScheduleFormDataProvider
         return $result;
     }
 
-    /**
-     * @return array
-     */
     protected function getStoreValues(): array
     {
         $storeCollection = $this->storeFacade->getAllStores();
@@ -113,11 +101,6 @@ class PriceProductScheduleFormDataProvider
         return $result;
     }
 
-    /**
-     * @param int|null $idStore
-     *
-     * @return array
-     */
     protected function getCurrencyValues(?int $idStore): array
     {
         if ($idStore === null) {
@@ -134,11 +117,6 @@ class PriceProductScheduleFormDataProvider
         return $result;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductScheduleTransfer $priceProductScheduleTransfer
-     *
-     * @return \Generated\Shared\Transfer\PriceProductScheduleTransfer
-     */
     public function getData(PriceProductScheduleTransfer $priceProductScheduleTransfer): PriceProductScheduleTransfer
     {
         $priceProductTransfer = $priceProductScheduleTransfer->getPriceProduct();
@@ -173,11 +151,6 @@ class PriceProductScheduleFormDataProvider
         ];
     }
 
-    /**
-     * @param int|null $idPriceProductSchedule
-     *
-     * @return bool
-     */
     protected function isPriceTypeDisabled(?int $idPriceProductSchedule): bool
     {
         return $idPriceProductSchedule !== null;

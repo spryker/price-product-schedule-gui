@@ -41,11 +41,6 @@ class ConcreteProductViewExpander implements ConcreteProductViewExpanderInterfac
      */
     protected $viewExpanderTableFactory;
 
-    /**
-     * @param \Spryker\Zed\PriceProductScheduleGui\Dependency\Facade\PriceProductScheduleGuiToPriceProductFacadeInterface $priceProductFacade
-     * @param \Spryker\Zed\PriceProductScheduleGui\Dependency\Facade\PriceProductScheduleGuiToTranslatorFacadeInterface $translatorFacade
-     * @param \Spryker\Zed\PriceProductScheduleGui\Communication\ViewExpander\ViewExpanderTableFactoryInterface $viewExpanderTableFactory
-     */
     public function __construct(
         PriceProductScheduleGuiToPriceProductFacadeInterface $priceProductFacade,
         PriceProductScheduleGuiToTranslatorFacadeInterface $translatorFacade,
@@ -56,11 +51,6 @@ class ConcreteProductViewExpander implements ConcreteProductViewExpanderInterfac
         $this->viewExpanderTableFactory = $viewExpanderTableFactory;
     }
 
-    /**
-     * @param array $viewData
-     *
-     * @return array
-     */
     public function expandProductConcreteEditViewData(array $viewData): array
     {
         $priceTypeTransfers = $this->priceProductFacade->getPriceTypeValues();
@@ -93,11 +83,6 @@ class ConcreteProductViewExpander implements ConcreteProductViewExpanderInterfac
         return $viewData;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceTypeTransfer $priceTypeTransfer
-     *
-     * @return \Generated\Shared\Transfer\TabItemTransfer
-     */
     protected function createPriceTypeTab(PriceTypeTransfer $priceTypeTransfer): TabItemTransfer
     {
         $tabItemTransfer = new TabItemTransfer();
@@ -107,21 +92,11 @@ class ConcreteProductViewExpander implements ConcreteProductViewExpanderInterfac
             ->setTemplate(static::PRICE_TYPE_TEMPLATE);
     }
 
-    /**
-     * @param string $text
-     *
-     * @return string
-     */
     protected function translate(string $text): string
     {
         return $this->translatorFacade->trans($text);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\TabsViewTransfer $tabsViewTransfer
-     *
-     * @return \Generated\Shared\Transfer\TabsViewTransfer
-     */
     protected function setActiveTabName(TabsViewTransfer $tabsViewTransfer): TabsViewTransfer
     {
         if ($tabsViewTransfer->getTabs()->count() === 0) {
@@ -137,13 +112,6 @@ class ConcreteProductViewExpander implements ConcreteProductViewExpanderInterfac
         return $tabsViewTransfer;
     }
 
-    /**
-     * @param array $tablesByPriceType
-     * @param \Generated\Shared\Transfer\PriceTypeTransfer $priceTypeTransfer
-     * @param \Spryker\Zed\PriceProductScheduleGui\Communication\Table\PriceProductScheduleConcreteTable $priceProductScheduleConcreteTable
-     *
-     * @return array
-     */
     protected function addTableByPriceType(
         array $tablesByPriceType,
         PriceTypeTransfer $priceTypeTransfer,

@@ -29,11 +29,6 @@ class PriceProductScheduleTable extends AbstractPriceProductScheduleTable
      */
     protected $priceProductScheduleQuery;
 
-    /**
-     * @param \Spryker\Zed\PriceProductScheduleGui\Communication\Formatter\RowFormatterInterface $rowFormatter
-     * @param \Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductScheduleQuery $priceProductScheduleQuery
-     * @param int $idPriceProductScheduleList
-     */
     public function __construct(
         RowFormatterInterface $rowFormatter,
         SpyPriceProductScheduleQuery $priceProductScheduleQuery,

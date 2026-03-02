@@ -16,17 +16,11 @@ class PriceProductScheduleDateConstraint extends Constraint
      */
     protected const VALIDATION_MESSAGE = 'Finish at must be greater than start from';
 
-    /**
-     * @return string
-     */
     public function getTargets(): string
     {
         return static::CLASS_CONSTRAINT;
     }
 
-    /**
-     * @return string
-     */
     public function getMessage(): string
     {
         return static::VALIDATION_MESSAGE;

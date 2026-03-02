@@ -24,11 +24,6 @@ class PriceProductScheduleGuiToMoneyFacadeBridge implements PriceProductSchedule
         $this->moneyFacade = $moneyFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\MoneyTransfer $moneyTransfer
-     *
-     * @return string
-     */
     public function formatWithoutSymbol(MoneyTransfer $moneyTransfer): string
     {
         return $this->moneyFacade->formatWithoutSymbol($moneyTransfer);

@@ -25,11 +25,6 @@ class PriceProductScheduleGuiToUtilCsvServiceBridge implements PriceProductSched
         $this->utilCsvService = $utilCsvService;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CsvFileTransfer $csvFileTransfer
-     *
-     * @return \Symfony\Component\HttpFoundation\StreamedResponse
-     */
     public function exportFile(CsvFileTransfer $csvFileTransfer): StreamedResponse
     {
         return $this->utilCsvService->exportFile($csvFileTransfer);

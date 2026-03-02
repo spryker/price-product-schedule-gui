@@ -39,11 +39,6 @@ class PriceProductSchedulePriceConstraintValidator extends ConstraintValidator
             ->addViolation();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductScheduleTransfer $priceProductScheduleTransfer
-     *
-     * @return bool
-     */
     protected function assertPrices(PriceProductScheduleTransfer $priceProductScheduleTransfer): bool
     {
         $priceProductTransfer = $priceProductScheduleTransfer->getPriceProduct();

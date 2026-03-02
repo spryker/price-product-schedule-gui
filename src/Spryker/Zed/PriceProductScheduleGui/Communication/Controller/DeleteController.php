@@ -96,11 +96,6 @@ class DeleteController extends AbstractController
         ]);
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Generated\Shared\Transfer\PriceProductScheduleTransfer
-     */
     protected function createPriceProductScheduleTransfer(Request $request): PriceProductScheduleTransfer
     {
         $idPriceProductSchedule = $this->castId($request->query->get(static::PARAM_ID_PRICE_PRODUCT_SCHEDULE));
@@ -108,11 +103,6 @@ class DeleteController extends AbstractController
         return (new PriceProductScheduleTransfer())->setIdPriceProductSchedule($idPriceProductSchedule);
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormInterface $form
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     protected function handleSubmitForm(FormInterface $form): RedirectResponse
     {
         /** @var \Generated\Shared\Transfer\PriceProductScheduleTransfer $priceProductScheduleTransfer */
@@ -130,11 +120,6 @@ class DeleteController extends AbstractController
         return $this->redirectResponse($redirectUrl);
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return string
-     */
     protected function makeRedirectUrl(Request $request): string
     {
         $idProductAbstract = $request->query->getInt(static::PARAM_ID_PRODUCT_ABSTRACT) ?: null;

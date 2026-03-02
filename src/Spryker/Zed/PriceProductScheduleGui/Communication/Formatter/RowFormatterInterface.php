@@ -12,19 +12,7 @@ use Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductSchedule;
 
 interface RowFormatterInterface
 {
-    /**
-     * @param int $amount
-     * @param \Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductSchedule $priceProductScheduleEntity
-     *
-     * @return string
-     */
     public function formatMoney(int $amount, SpyPriceProductSchedule $priceProductScheduleEntity): string;
 
-    /**
-     * @param \DateTime $dateTime
-     * @param int $fkStore
-     *
-     * @return string
-     */
     public function formatDateTime(DateTime $dateTime, int $fkStore): string;
 }

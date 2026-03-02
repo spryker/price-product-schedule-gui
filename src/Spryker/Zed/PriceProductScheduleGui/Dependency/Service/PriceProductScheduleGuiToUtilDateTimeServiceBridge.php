@@ -24,12 +24,6 @@ class PriceProductScheduleGuiToUtilDateTimeServiceBridge implements PriceProduct
         $this->utilDateTimeService = $utilDateTimeService;
     }
 
-    /**
-     * @param \DateTime|string $date
-     * @param string $format
-     *
-     * @return string
-     */
     public function formatDateTimeToCustomFormat(DateTime|string $date, string $format): string
     {
         return $this->utilDateTimeService->formatDateTimeToCustomFormat($date, $format);

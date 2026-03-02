@@ -68,9 +68,6 @@ class PriceProductScheduleListTableQueryTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -79,9 +76,6 @@ class PriceProductScheduleListTableQueryTest extends Unit
         $this->registerFormFactoryServiceMock();
     }
 
-    /**
-     * @return void
-     */
     public function testFetchDataReturnsCorrectPriceProductScheduleData(): void
     {
         // Arrange
@@ -130,13 +124,6 @@ class PriceProductScheduleListTableQueryTest extends Unit
         $this->assertEquals(1, $result[$priceProductScheduleListTransfer2->getIdPriceProductScheduleList()][static::COL_NUMBER_OF_PRODUCTS]);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceTypeTransfer $priceTypeTransfer
-     * @param int $idCurrency
-     * @param int $idStore
-     *
-     * @return array
-     */
     protected function getPriceProductData(PriceTypeTransfer $priceTypeTransfer, int $idCurrency, int $idStore): array
     {
         return [
@@ -151,17 +138,11 @@ class PriceProductScheduleListTableQueryTest extends Unit
         ];
     }
 
-    /**
-     * @return void
-     */
     protected function registerTwigServiceMock(): void
     {
         $this->tester->getContainer()->set(static::SERVICE_TWIG, $this->getTwigMock());
     }
 
-    /**
-     * @return void
-     */
     protected function registerFormFactoryServiceMock(): void
     {
         $this->tester->getContainer()->set(static::SERVICE_FORM_FACTORY, $this->getFormFactoryMock());
@@ -182,9 +163,6 @@ class PriceProductScheduleListTableQueryTest extends Unit
         return $twigMock;
     }
 
-    /**
-     * @return \Twig\Loader\LoaderInterface
-     */
     protected function getChainLoader(): LoaderInterface
     {
         return new ChainLoader();

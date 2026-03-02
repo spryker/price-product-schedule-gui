@@ -12,10 +12,5 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 
 interface PriceProductScheduleGuiToUtilCsvServiceInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CsvFileTransfer $csvFileTransfer
-     *
-     * @return \Symfony\Component\HttpFoundation\StreamedResponse
-     */
     public function exportFile(CsvFileTransfer $csvFileTransfer): StreamedResponse;
 }

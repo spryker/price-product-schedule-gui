@@ -30,9 +30,6 @@ class ImportController extends AbstractController
         ]);
     }
 
-    /**
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
-     */
     public function tableAction(): JsonResponse
     {
         $priceProductScheduleTable = $this->getFactory()->createPriceProductScheduleListTable();

@@ -12,11 +12,5 @@ use Orm\Zed\Currency\Persistence\SpyCurrency;
 
 interface CurrencyMapperInterface
 {
-    /**
-     * @param \Orm\Zed\Currency\Persistence\SpyCurrency $currencyEntity
-     * @param \Generated\Shared\Transfer\CurrencyTransfer $currencyTransfer
-     *
-     * @return \Generated\Shared\Transfer\CurrencyTransfer
-     */
     public function mapCurrencyEntityToTransfer(SpyCurrency $currencyEntity, CurrencyTransfer $currencyTransfer): CurrencyTransfer;
 }

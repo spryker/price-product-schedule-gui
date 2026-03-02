@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\TabsViewTransfer;
 
 interface AbstractProductTabCreatorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\TabsViewTransfer $tabsViewTransfer
-     *
-     * @return \Generated\Shared\Transfer\TabsViewTransfer
-     */
     public function createScheduledPriceTabForProductAbstract(TabsViewTransfer $tabsViewTransfer): TabsViewTransfer;
 }

@@ -45,11 +45,6 @@ class PriceProductScheduleImportFormType extends AbstractType
      */
     public const BLOCK_PREFIX = 'priceProductScheduleImport';
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         parent::configureOptions($resolver);
@@ -59,9 +54,6 @@ class PriceProductScheduleImportFormType extends AbstractType
         ]);
     }
 
-    /**
-     * @return string
-     */
     public function getBlockPrefix(): string
     {
         return static::BLOCK_PREFIX;
@@ -141,9 +133,6 @@ class PriceProductScheduleImportFormType extends AbstractType
         return $this;
     }
 
-    /**
-     * @return string
-     */
     protected function getAcceptMimeTypes(): string
     {
         if (!$this->getConfig()->isFileExtensionValidationEnabled()) {
@@ -177,11 +166,6 @@ class PriceProductScheduleImportFormType extends AbstractType
         ];
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\File\UploadedFile $uploadedFile
-     *
-     * @return \Spryker\Zed\PriceProductSchedule\Communication\File\UploadedFile
-     */
     protected function mapSymfonyUploadedFileToUploadedFile(SymfonyUploadedFile $uploadedFile): UploadedFile
     {
         /** @var string $path */

@@ -11,11 +11,6 @@ use Spryker\Zed\Gui\Communication\Table\AbstractTable;
 
 class TableFormatter implements TableFormatterInterface
 {
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\AbstractTable $table
-     *
-     * @return array
-     */
     public function formatAbstractTableToArray(AbstractTable $table): array
     {
         $tableData = $table->fetchData();

@@ -16,11 +16,6 @@ class PriceProductScheduleRedirectToProductAbstract implements PriceProductSched
      */
     protected const REDIRECT_URL_PRODUCT_ABSTRACT_PATTERN = '/product-management/edit?id-product-abstract=%d#tab-content-scheduled_prices';
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductScheduleRedirectTransfer $priceProductScheduleRedirectTransfer
-     *
-     * @return \Generated\Shared\Transfer\PriceProductScheduleRedirectTransfer
-     */
     public function makeRedirectUrl(PriceProductScheduleRedirectTransfer $priceProductScheduleRedirectTransfer): PriceProductScheduleRedirectTransfer
     {
         $priceProductScheduleRedirectTransfer->requireIdProductAbstract();

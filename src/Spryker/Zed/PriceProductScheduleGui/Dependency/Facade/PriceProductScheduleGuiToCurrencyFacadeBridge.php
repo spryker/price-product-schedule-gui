@@ -32,11 +32,6 @@ class PriceProductScheduleGuiToCurrencyFacadeBridge implements PriceProductSched
         return $this->currencyFacade->getAllStoresWithCurrencies();
     }
 
-    /**
-     * @param int $idStore
-     *
-     * @return \Generated\Shared\Transfer\StoreWithCurrencyTransfer
-     */
     public function getStoreWithCurrenciesByIdStore(int $idStore): StoreWithCurrencyTransfer
     {
         return $this->currencyFacade->getStoreWithCurrenciesByIdStore($idStore);

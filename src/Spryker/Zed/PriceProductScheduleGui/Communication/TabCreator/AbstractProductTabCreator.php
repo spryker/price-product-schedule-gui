@@ -27,11 +27,6 @@ class AbstractProductTabCreator implements AbstractProductTabCreatorInterface
      */
     public const TAB_SCHEDULED_PRICE_TEMPLATE = '@PriceProductScheduleGui/_partials/schedule-price-tab.twig';
 
-    /**
-     * @param \Generated\Shared\Transfer\TabsViewTransfer $tabsViewTransfer
-     *
-     * @return \Generated\Shared\Transfer\TabsViewTransfer
-     */
     public function createScheduledPriceTabForProductAbstract(TabsViewTransfer $tabsViewTransfer): TabsViewTransfer
     {
         $tabItemTransfer = new TabItemTransfer();

@@ -45,11 +45,6 @@ class PriceProductScheduleRedirectStrategyResolver implements PriceProductSchedu
         $this->priceProductScheduleStrategyContainer = $priceProductScheduleStrategyContainer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductScheduleRedirectTransfer $priceProductScheduleRedirectTransfer
-     *
-     * @return \Generated\Shared\Transfer\PriceProductScheduleRedirectTransfer
-     */
     public function resolve(PriceProductScheduleRedirectTransfer $priceProductScheduleRedirectTransfer): PriceProductScheduleRedirectTransfer
     {
         $this->validateContainer();

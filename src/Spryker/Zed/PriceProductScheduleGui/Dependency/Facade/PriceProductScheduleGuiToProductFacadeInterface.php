@@ -9,10 +9,5 @@ namespace Spryker\Zed\PriceProductScheduleGui\Dependency\Facade;
 
 interface PriceProductScheduleGuiToProductFacadeInterface
 {
-    /**
-     * @param int $idConcrete
-     *
-     * @return int|null
-     */
     public function findProductAbstractIdByConcreteId(int $idConcrete): ?int;
 }

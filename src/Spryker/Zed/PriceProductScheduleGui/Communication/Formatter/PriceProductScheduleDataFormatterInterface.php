@@ -11,17 +11,7 @@ use Generated\Shared\Transfer\PriceProductTransfer;
 
 interface PriceProductScheduleDataFormatterInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $priceProductTransfer
-     *
-     * @return string
-     */
     public function formatTitle(PriceProductTransfer $priceProductTransfer): string;
 
-    /**
-     * @param string|null $timezone
-     *
-     * @return string
-     */
     public function formatTimezoneText(?string $timezone): string;
 }

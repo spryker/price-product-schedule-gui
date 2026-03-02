@@ -25,11 +25,6 @@ class PriceTypeSubForm extends AbstractType
      */
     public const FIELD_ID_PRICE_TYPE = 'idPriceType';
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefined([

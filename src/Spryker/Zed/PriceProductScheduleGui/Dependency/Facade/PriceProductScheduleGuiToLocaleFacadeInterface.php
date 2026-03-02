@@ -9,8 +9,5 @@ namespace Spryker\Zed\PriceProductScheduleGui\Dependency\Facade;
 
 interface PriceProductScheduleGuiToLocaleFacadeInterface
 {
-    /**
-     * @return string
-     */
     public function getCurrentLocaleName(): string;
 }

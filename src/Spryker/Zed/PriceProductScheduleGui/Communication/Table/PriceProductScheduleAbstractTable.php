@@ -36,12 +36,6 @@ class PriceProductScheduleAbstractTable extends AbstractScheduledPriceTable
      */
     protected $idPriceType;
 
-    /**
-     * @param int $idProductAbstract
-     * @param int $idPriceType
-     * @param \Spryker\Zed\PriceProductScheduleGui\Communication\Formatter\RowFormatterInterface $rowFormatter
-     * @param \Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductScheduleQuery $priceProductScheduleQuery
-     */
     public function __construct(
         int $idProductAbstract,
         int $idPriceType,
@@ -59,11 +53,6 @@ class PriceProductScheduleAbstractTable extends AbstractScheduledPriceTable
         $this->priceProductScheduleQuery = $priceProductScheduleQuery;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return \Spryker\Zed\Gui\Communication\Table\TableConfiguration
-     */
     protected function configure(TableConfiguration $config): TableConfiguration
     {
         $config = parent::configure($config);
@@ -72,9 +61,6 @@ class PriceProductScheduleAbstractTable extends AbstractScheduledPriceTable
         return $config;
     }
 
-    /**
-     * @return \Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductScheduleQuery
-     */
     protected function prepareQuery(): SpyPriceProductScheduleQuery
     {
         return (new SpyPriceProductScheduleQuery())
@@ -84,11 +70,6 @@ class PriceProductScheduleAbstractTable extends AbstractScheduledPriceTable
             ->filterByFkPriceType($this->idPriceType);
     }
 
-    /**
-     * @param \Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductSchedule $item
-     *
-     * @return string
-     */
     protected function generatePriceProductScheduleRemoveButton(SpyPriceProductSchedule $item): string
     {
         return $this->generateRemoveButton(
