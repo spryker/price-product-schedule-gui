@@ -72,6 +72,20 @@
         <property name="data" type="array" singular="data" deprecated="Use CsvFile.dataGenerators instead."/>
         <property name="dataGenerators" type="array" singular="dataGenerator" strict="true"/>
         <property name="header" type="array" singular="header"/>
+        <property name="isGzipEnabled" type="bool" strict="true"/>
+    </transfer>
+
+    <transfer name="PriceProductScheduleExportItem" strict="true">
+        <property name="idPriceProductSchedule" type="int"/>
+        <property name="abstractSku" type="string"/>
+        <property name="concreteSku" type="string"/>
+        <property name="priceTypeName" type="string"/>
+        <property name="storeName" type="string"/>
+        <property name="currencyCode" type="string"/>
+        <property name="netAmount" type="int"/>
+        <property name="grossAmount" type="int"/>
+        <property name="activeFrom" type="string"/>
+        <property name="activeTo" type="string"/>
     </transfer>
 
     <transfer name="PriceType">
@@ -129,5 +143,15 @@
 
     <transfer name="PriceProductScheduleImportMetaData">
         <property name="identifier" type="string"/>
+    </transfer>
+
+    <transfer name="PriceProductScheduleExportItemCriteria" strict="true">
+        <property name="idPriceProductScheduleList" type="int"/>
+        <property name="lastProcessedId" type="int"/>
+        <property name="limit" type="int"/>
+    </transfer>
+
+    <transfer name="PriceProductScheduleExportItemCollection" strict="true">
+        <property name="priceProductScheduleExportItems" type="PriceProductScheduleExportItem[]" singular="priceProductScheduleExportItem"/>
     </transfer>
 </transfers>

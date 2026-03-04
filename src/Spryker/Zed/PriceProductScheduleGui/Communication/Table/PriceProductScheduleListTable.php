@@ -143,6 +143,11 @@ class PriceProductScheduleListTable extends AbstractTable
     /**
      * @var string
      */
+    protected const DOWNLOAD_DISABLED_TOOLTIP = 'price_product_schedule_gui.download_disabled.tooltip';
+
+    /**
+     * @var string
+     */
     protected const BUTTON_DELETE = 'Delete';
 
     /**
@@ -190,12 +195,16 @@ class PriceProductScheduleListTable extends AbstractTable
      */
     protected $utilDateTimeService;
 
+    protected int $csvExportMaxPriceCount;
+
     public function __construct(
         SpyPriceProductScheduleListQuery $priceProductScheduleListQuery,
-        PriceProductScheduleGuiToUtilDateTimeServiceInterface $utilDateTimeService
+        PriceProductScheduleGuiToUtilDateTimeServiceInterface $utilDateTimeService,
+        int $csvExportMaxPriceCount = 0
     ) {
         $this->priceProductScheduleListQuery = $priceProductScheduleListQuery;
         $this->utilDateTimeService = $utilDateTimeService;
+        $this->csvExportMaxPriceCount = $csvExportMaxPriceCount;
     }
 
     protected function configure(TableConfiguration $config): TableConfiguration
@@ -388,12 +397,33 @@ class PriceProductScheduleListTable extends AbstractTable
     protected function generatePriceProductScheduleListDownloadButton(
         SpyPriceProductScheduleList $priceProductScheduleListEntity
     ): string {
+        if ($this->isDownloadDisabled($priceProductScheduleListEntity)) {
+            /** @var \Twig\Environment $twig */
+            $twig = $this->getApplicationContainer()->get(static::SERVICE_TWIG);
+
+            return $twig->render('@PriceProductScheduleGui/Table/disabled-button.twig', [
+                'tooltip' => static::DOWNLOAD_DISABLED_TOOLTIP,
+                'title' => static::BUTTON_DOWNLOAD,
+            ]);
+        }
+
         return $this->generateViewButton(
             Url::generate(static::URL_PRICE_PRODUCT_SCHEDULE_LIST_DOWNLOAD, [
                 static::PARAM_ID_PRICE_PRODUCT_SCHEDULE_LIST => $priceProductScheduleListEntity->getIdPriceProductScheduleList(),
             ]),
             static::BUTTON_DOWNLOAD,
         );
+    }
+
+    protected function isDownloadDisabled(SpyPriceProductScheduleList $priceProductScheduleListEntity): bool
+    {
+        if ($this->csvExportMaxPriceCount === 0) {
+            return false;
+        }
+
+        $numberOfPrices = (int)$priceProductScheduleListEntity->getVirtualColumn(static::COL_NUMBER_OF_PRICES);
+
+        return $numberOfPrices > $this->csvExportMaxPriceCount;
     }
 
     protected function generatePriceProductScheduleListDeleteButton(

@@ -10,6 +10,7 @@ Actions,Aktionen
 "Dates must be in right format and to date must be greater than from.","Die Daten müssen im richtigen Format vorliegen und aktuell müssen größer als von sein."
 Delete,Löschen
 Download,Herunterladen
+price_product_schedule_gui.download_disabled.tooltip,"Das Exportieren großer Datensätze über das Web wird nicht unterstützt. Bitte verwenden Sie stattdessen die Datenexportfunktion."
 Draft,Entwurf
 "Dry run of your import","Trockenlauf Ihres Imports"
 Edit,Bearbeiten

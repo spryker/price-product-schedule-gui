@@ -10,6 +10,7 @@ Actions,Actions
 "Dates must be in right format and to date must be greater than from.","Dates must be in right format and to date must be greater than from."
 Delete,Delete
 Download,Download
+price_product_schedule_gui.download_disabled.tooltip,"Exporting large datasets via web is not supported. Please use the data export functionality instead."
 Draft,Draft
 "Dry run of your import","Dry run of your import"
 Edit,Edit
