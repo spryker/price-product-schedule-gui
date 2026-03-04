@@ -104,6 +104,12 @@ class PriceProductScheduleGuiConfig extends AbstractBundleConfig
      */
     protected const IS_FILE_EXTENSION_VALIDATION_ENABLED = false;
 
+    protected const int CSV_EXPORT_CHUNK_SIZE = 10000;
+
+    protected const bool IS_GZIP_CSV_EXPORT_ENABLED = false;
+
+    protected const int CSV_EXPORT_MAX_PRICE_COUNT = 1000000;
+
     /**
      * @api
      *
@@ -279,5 +285,49 @@ class PriceProductScheduleGuiConfig extends AbstractBundleConfig
     public function isFileExtensionValidationEnabled(): bool
     {
         return static::IS_FILE_EXTENSION_VALIDATION_ENABLED;
+    }
+
+    /**
+     * Specification:
+     * - Returns the chunk size for paginated CSV export queries.
+     *
+     * @api
+     *
+     * @return int
+     */
+    public function getCsvExportChunkSize(): int
+    {
+        return static::CSV_EXPORT_CHUNK_SIZE;
+    }
+
+    /**
+     * Specification:
+     * - Enables gzip compression for streamed CSV export responses.
+     * - When enabled, the response uses Content-Encoding: gzip for transparent browser decompression.
+     *
+     * @api
+     *
+     * @return bool
+     */
+    public function isGzipCsvExportEnabled(): bool
+    {
+        return static::IS_GZIP_CSV_EXPORT_ENABLED;
+    }
+
+    /**
+     * Specification:
+     * - Returns the maximum number of scheduled prices allowed for web-based CSV export.
+     * - When a schedule list exceeds this threshold, the Download button is disabled
+     *   and the user is advised to use the data export functionality instead.
+     * - The limit exists because exporting very large datasets via HTTP can exceed
+     *   PHP memory limits and execution time constraints.
+     *
+     * @api
+     *
+     * @return int
+     */
+    public function getCsvExportMaxPriceCount(): int
+    {
+        return static::CSV_EXPORT_MAX_PRICE_COUNT;
     }
 }

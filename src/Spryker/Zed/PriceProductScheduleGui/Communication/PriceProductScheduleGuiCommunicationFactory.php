@@ -13,8 +13,8 @@ use Generated\Shared\Transfer\PriceProductScheduleTransfer;
 use Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductScheduleListQuery;
 use Orm\Zed\PriceProductSchedule\Persistence\SpyPriceProductScheduleQuery;
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
-use Spryker\Zed\PriceProductScheduleGui\Communication\Exporter\PriceProductScheduleCsvExporter;
 use Spryker\Zed\PriceProductScheduleGui\Communication\Exporter\PriceProductScheduleCsvExporterInterface;
+use Spryker\Zed\PriceProductScheduleGui\Communication\Exporter\PriceProductScheduleLeanCsvExporter;
 use Spryker\Zed\PriceProductScheduleGui\Communication\Extractor\PriceProductScheduleDataExtractor;
 use Spryker\Zed\PriceProductScheduleGui\Communication\Extractor\PriceProductScheduleDataExtractorInterface;
 use Spryker\Zed\PriceProductScheduleGui\Communication\Form\Constraint\PriceProductScheduleDateConstraint;
@@ -245,6 +245,7 @@ class PriceProductScheduleGuiCommunicationFactory extends AbstractCommunicationF
         return new PriceProductScheduleListTable(
             $this->getPriceProductScheduleListPropelQuery(),
             $this->getUtilDateTimeService(),
+            $this->getConfig()->getCsvExportMaxPriceCount(),
         );
     }
 
@@ -266,7 +267,16 @@ class PriceProductScheduleGuiCommunicationFactory extends AbstractCommunicationF
      */
     public function createPriceProductScheduleCsvExporter(): PriceProductScheduleCsvExporterInterface
     {
-        return new PriceProductScheduleCsvExporter(
+        return $this->createPriceProductScheduleLeanCsvExporter();
+    }
+
+    /**
+     * @return \Spryker\Zed\PriceProductScheduleGui\Communication\Exporter\PriceProductScheduleCsvExporterInterface
+     */
+    public function createPriceProductScheduleLeanCsvExporter(): PriceProductScheduleCsvExporterInterface
+    {
+        return new PriceProductScheduleLeanCsvExporter(
+            $this->getConfig(),
             $this->getPriceProductScheduleFacade(),
             $this->getUtilCsvService(),
         );

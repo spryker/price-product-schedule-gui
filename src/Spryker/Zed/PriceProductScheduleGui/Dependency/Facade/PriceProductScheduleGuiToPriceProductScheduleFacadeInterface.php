@@ -9,6 +9,8 @@ namespace Spryker\Zed\PriceProductScheduleGui\Dependency\Facade;
 
 use Generated\Shared\Transfer\PriceProductScheduleCsvValidationResultTransfer;
 use Generated\Shared\Transfer\PriceProductScheduledListImportRequestTransfer;
+use Generated\Shared\Transfer\PriceProductScheduleExportItemCollectionTransfer;
+use Generated\Shared\Transfer\PriceProductScheduleExportItemCriteriaTransfer;
 use Generated\Shared\Transfer\PriceProductScheduleListImportResponseTransfer;
 use Generated\Shared\Transfer\PriceProductScheduleListResponseTransfer;
 use Generated\Shared\Transfer\PriceProductScheduleListTransfer;
@@ -122,4 +124,13 @@ interface PriceProductScheduleGuiToPriceProductScheduleFacadeInterface
      * @return \Generated\Shared\Transfer\PriceProductScheduleListResponseTransfer
      */
     public function removePriceProductScheduleList(int $idPriceProductScheduleList): PriceProductScheduleListResponseTransfer;
+
+    /**
+     * @param \Generated\Shared\Transfer\PriceProductScheduleExportItemCriteriaTransfer $priceProductScheduleExportItemCriteriaTransfer
+     *
+     * @return \Generated\Shared\Transfer\PriceProductScheduleExportItemCollectionTransfer
+     */
+    public function getPriceProductScheduleExportItemCollection(
+        PriceProductScheduleExportItemCriteriaTransfer $priceProductScheduleExportItemCriteriaTransfer,
+    ): PriceProductScheduleExportItemCollectionTransfer;
 }
