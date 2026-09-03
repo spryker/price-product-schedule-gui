@@ -13,13 +13,34 @@ function PriceProductScheduleCreate(options) {
     var self = this;
 
     this.init = function () {
-        this.initActiveFromDatepicker();
-        this.initActiveToDatepicker();
+        // From spryker/gui 5.4.0 on, these fields are built with `DateTimePickerType`, which renders
+        // a single input marked with `data-spryker-picker` and lets the Gui DateTimePicker initialize
+        // and range-link them. Older Gui versions render the compound `DateTimeType` sub-fields the
+        // legacy pickers below are bound to.
+        if (!this.isGuiDateTimePickerUsed()) {
+            this.initActiveFromDatepicker();
+            this.initActiveToDatepicker();
+        }
+
         this.hideTimezoneMessage();
         this.initDependentSelectBox();
         this.preventDoubleSubmission();
     };
 
+    /**
+     * The legacy `$activeFrom`/`$activeTo` selectors target the compound `DateTimeType` date
+     * sub-field, which no longer exists once the single-input picker is in place.
+     *
+     * @return {boolean}
+     */
+    this.isGuiDateTimePickerUsed = function () {
+        return !this.$activeFrom.length || this.$activeFrom.is('[data-spryker-picker]');
+    };
+
+    /**
+     * @deprecated Superseded by `DateTimePickerType` and the Gui DateTimePicker. Kept only for
+     *   installations running spryker/gui older than 5.4.0.
+     */
     this.initActiveFromDatepicker = function () {
         this.$activeFrom.click(function (event) {
             event.preventDefault();
@@ -32,6 +53,10 @@ function PriceProductScheduleCreate(options) {
         });
     };
 
+    /**
+     * @deprecated Superseded by `DateTimePickerType` and the Gui DateTimePicker. Kept only for
+     *   installations running spryker/gui older than 5.4.0.
+     */
     this.initActiveToDatepicker = function () {
         this.$activeTo.click(function (event) {
             event.preventDefault();

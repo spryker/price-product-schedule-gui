@@ -9,6 +9,7 @@ namespace Spryker\Zed\PriceProductScheduleGui\Communication\Form;
 
 use Generated\Shared\Transfer\PriceProductScheduleTransfer;
 use Generated\Shared\Transfer\PriceProductTransfer;
+use Spryker\Zed\Gui\Communication\Form\Type\DateTimePickerType;
 use Spryker\Zed\Kernel\Communication\Form\AbstractType;
 use Spryker\Zed\PriceProductScheduleGui\Communication\Form\Provider\PriceProductScheduleFormDataProvider;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -45,9 +46,26 @@ class PriceProductScheduleForm extends AbstractType
     public const FIELD_ACTIVE_TO = 'activeTo';
 
     /**
+     * Legacy `DateTimeType` format, kept unchanged for installations running spryker/gui older
+     * than 5.4.0.
+     *
      * @var string
      */
     protected const PATTERN_DATE_FORMAT = 'Y-m-d H:i:s';
+
+    /**
+     * ICU pattern used by the Gui date-time picker. Seconds are intentionally omitted: the picker
+     * offers no seconds control, and the values are persisted with seconds by
+     * \Spryker\Zed\PriceProductScheduleGui\Communication\Form\Transformer\DateTransformer.
+     *
+     * @var string
+     */
+    protected const PATTERN_PICKER_DATE_FORMAT = 'yyyy-MM-dd HH:mm';
+
+    /**
+     * @var string
+     */
+    protected const RANGE_GROUP_ACTIVE = 'price-product-schedule-active';
 
     /**
      * @var string
@@ -151,16 +169,11 @@ class PriceProductScheduleForm extends AbstractType
      */
     protected function addActiveFrom(FormBuilderInterface $builder)
     {
-        $builder->add(static::FIELD_ACTIVE_FROM, DateTimeType::class, [
-            'label' => 'Start from (included)',
-            'html5' => false,
-            'date_widget' => 'single_text',
-            'format' => static::PATTERN_DATE_FORMAT,
-            'time_widget' => 'choice',
-            'constraints' => [
-                new NotBlank(),
-            ],
-        ]);
+        $builder->add(
+            static::FIELD_ACTIVE_FROM,
+            $this->getActiveDateFieldType(),
+            $this->getActiveFromFieldOptions(),
+        );
 
         $builder->get(static::FIELD_ACTIVE_FROM)
             ->addModelTransformer($this->getFactory()->createDateTransformer());
@@ -175,21 +188,80 @@ class PriceProductScheduleForm extends AbstractType
      */
     protected function addActiveTo(FormBuilderInterface $builder)
     {
-        $builder->add(static::FIELD_ACTIVE_TO, DateTimeType::class, [
-            'label' => 'Finish at (included)',
-            'html5' => false,
-            'date_widget' => 'single_text',
-            'format' => static::PATTERN_DATE_FORMAT,
-            'time_widget' => 'choice',
-            'constraints' => [
-                new NotBlank(),
-            ],
-        ]);
+        $builder->add(
+            static::FIELD_ACTIVE_TO,
+            $this->getActiveDateFieldType(),
+            $this->getActiveToFieldOptions(),
+        );
 
         $builder->get(static::FIELD_ACTIVE_TO)
             ->addModelTransformer($this->getFactory()->createDateTransformer());
 
         return $this;
+    }
+
+    protected function getActiveDateFieldType(): string
+    {
+        if ($this->isGuiDateTimePickerTypeAvailable()) {
+            return DateTimePickerType::class;
+        }
+
+        return DateTimeType::class;
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    protected function getActiveFromFieldOptions(): array
+    {
+        return $this->getActiveDateFieldOptions(
+            'Start from (included)',
+            DateTimePickerType::RANGE_ROLE_START,
+        );
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    protected function getActiveToFieldOptions(): array
+    {
+        return $this->getActiveDateFieldOptions(
+            'Finish at (included)',
+            DateTimePickerType::RANGE_ROLE_END,
+        );
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    protected function getActiveDateFieldOptions(string $label, string $rangeRole): array
+    {
+        $options = [
+            'label' => $label,
+            'constraints' => [
+                new NotBlank(),
+            ],
+        ];
+
+        if ($this->isGuiDateTimePickerTypeAvailable()) {
+            return $options + [
+                'format' => static::PATTERN_PICKER_DATE_FORMAT,
+                'range_group' => static::RANGE_GROUP_ACTIVE,
+                'range_role' => $rangeRole,
+            ];
+        }
+
+        return $options + [
+            'html5' => false,
+            'date_widget' => 'single_text',
+            'format' => static::PATTERN_DATE_FORMAT,
+            'time_widget' => 'choice',
+        ];
+    }
+
+    protected function isGuiDateTimePickerTypeAvailable(): bool
+    {
+        return class_exists(DateTimePickerType::class);
     }
 
     public function getBlockPrefix(): string
