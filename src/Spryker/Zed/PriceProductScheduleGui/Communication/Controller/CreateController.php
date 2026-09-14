@@ -125,8 +125,8 @@ class CreateController extends AbstractController
         PriceProductScheduleTransfer $priceProductScheduleTransfer
     ): PriceProductScheduleTransfer {
         $priceProductTransfer = new PriceProductTransfer();
-        $idProduct = $request->query->getInt(static::PARAM_ID_PRODUCT) ?: null;
-        $idProductAbstract = $request->query->getInt(static::PARAM_ID_PRODUCT_ABSTRACT) ?: null;
+        $idProduct = (int)$request->query->get(static::PARAM_ID_PRODUCT, 0) ?: null;
+        $idProductAbstract = (int)$request->query->get(static::PARAM_ID_PRODUCT_ABSTRACT, 0) ?: null;
         $priceProductTransfer = $this->setProductIdentifierToPriceProductTransfer(
             $priceProductTransfer,
             $idProduct,

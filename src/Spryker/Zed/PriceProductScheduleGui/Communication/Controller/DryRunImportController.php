@@ -40,7 +40,7 @@ class DryRunImportController extends AbstractController
      */
     public function indexAction(Request $request)
     {
-        $idPriceProductScheduleList = $request->query->getInt(static::PARAM_ID_PRICE_PRODUCT_SCHEDULE_LIST) ?: null;
+        $idPriceProductScheduleList = (int)$request->query->get(static::PARAM_ID_PRICE_PRODUCT_SCHEDULE_LIST, 0) ?: null;
         $priceProductScheduleImportForm = $this
             ->getFactory()
             ->getPriceProductScheduleImportForm();

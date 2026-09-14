@@ -200,6 +200,9 @@ class PriceProductScheduleForm extends AbstractType
         return $this;
     }
 
+    /**
+     * @phpstan-return class-string<\Symfony\Component\Form\FormTypeInterface>
+     */
     protected function getActiveDateFieldType(): string
     {
         if ($this->isGuiDateTimePickerTypeAvailable()) {

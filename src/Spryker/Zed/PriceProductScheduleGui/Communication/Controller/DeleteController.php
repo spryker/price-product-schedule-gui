@@ -122,9 +122,9 @@ class DeleteController extends AbstractController
 
     protected function makeRedirectUrl(Request $request): string
     {
-        $idProductAbstract = $request->query->getInt(static::PARAM_ID_PRODUCT_ABSTRACT) ?: null;
-        $idProduct = $request->query->getInt(static::PARAM_ID_PRODUCT) ?: null;
-        $idPriceProductScheduleList = $request->query->getInt(static::PARAM_ID_PRICE_PRODUCT_SCHEDULE_LIST) ?: null;
+        $idProductAbstract = (int)$request->query->get(static::PARAM_ID_PRODUCT_ABSTRACT, 0) ?: null;
+        $idProduct = (int)$request->query->get(static::PARAM_ID_PRODUCT, 0) ?: null;
+        $idPriceProductScheduleList = (int)$request->query->get(static::PARAM_ID_PRICE_PRODUCT_SCHEDULE_LIST, 0) ?: null;
 
         $priceProductScheduleRedirectTransfer = (new PriceProductScheduleRedirectTransfer())
             ->setIdPriceProductScheduleList($idPriceProductScheduleList)
