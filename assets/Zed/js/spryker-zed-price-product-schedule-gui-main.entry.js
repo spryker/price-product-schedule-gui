@@ -6,7 +6,6 @@
 'use strict';
 
 var PriceProductScheduleCreate = require('./modules/price-product-schedule-create');
-require('./modules/scheduled-prices-errors-form');
 require('../sass/main.scss');
 
 $(document).ready(function () {
