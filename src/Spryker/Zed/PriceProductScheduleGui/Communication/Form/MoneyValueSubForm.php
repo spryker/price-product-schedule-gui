@@ -119,7 +119,6 @@ class MoneyValueSubForm extends AbstractType
         $currencyTransfer = $moneyValueTransfer->getCurrency();
         $moneyValueTransfer->setFkCurrency($currencyTransfer->getIdCurrency());
         $moneyValueTransfer->setFkStore($storeTransfer->getIdStore());
-        $event->setData($moneyValueTransfer);
     }
 
     /**
