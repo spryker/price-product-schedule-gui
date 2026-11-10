@@ -308,8 +308,8 @@ class PriceProductScheduleListTable extends AbstractTable
         if ($userEntity !== null) {
             $userFullName = sprintf(
                 static::TEMPLATE_FULL_NAME,
-                $userEntity->getFirstName(),
-                $userEntity->getLastName(),
+                htmlspecialchars((string)$userEntity->getFirstName(), ENT_QUOTES, 'UTF-8'),
+                htmlspecialchars((string)$userEntity->getLastName(), ENT_QUOTES, 'UTF-8'),
             );
         }
 
